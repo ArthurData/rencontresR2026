@@ -1,0 +1,170 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+.footer {
+  color: white !important;
+
+  strong {
+    color: white;
+    font-weight: 600;
+  }
+
+  a {
+    color: $orange !important;
+    background: white !important;
+    padding: 6px !important;
+    border-radius: 6px !important ;
+  }
+}
+
+.ground {
+  width: 100%;
+  height: 35%;
+  background-color: #4169ed;
+  position: absolute;
+  bottom: 0;
+}
+
+.sun {
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle, #ffd9008c 55%, #ffa600b8);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 35%;
+  right: 0;
+  z-index: 0;
+  animation: sunArc 900s linear forwards;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+@keyframes sunArc {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-50vw, -30vh);
+  }
+  100% {
+    transform: translate(-100vw, 0);
+  }
+}
+
+.sponso {
+  display: inline;
+  font-size: 11px;
+}
+
+.reveal {
+  .slide-logo {
+    top: 0;
+  }
+
+  .slides section {
+    .fragment {
+      opacity: 0;
+      visibility: hidden;
+      transition: all 1s ease !important;
+      will-change: opacity;
+    }
+
+    .fragment.visible {
+      opacity: 1;
+      visibility: inherit;
+    }
+
+    .fragment.fade-left {
+      transform: translate(100%, 0);
+    }
+
+    .fragment.fade-left.visible {
+      transform: translate(0, 0);
+    }
+  }
+
+  pre code {
+    font-size: 12px;
+  }
+}
+
+span.relevant {
+  background: #f05522;
+  padding: 3px 6px;
+  border-radius: 10px 6px 14px 17px;
+  color: white;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   "Vous avez été piratés" slide — CRT-off + typewriter effect
+   ───────────────────────────────────────────────────────────── */
+
+/* White overlay that mimics a CRT screen being shut off:
+   the picture collapses vertically toward a thin horizontal line slightly
+   above center (~40% from top, like a real CRT's residual electron beam),
+   then the line shrinks horizontally to a bright dot, then fades to black.
+   Animations are PAUSED by default so they only fire when the slide becomes
+   .present in reveal.js (otherwise they'd already have run at page load). */
+.hacked-screen-off {
+  position: absolute;
+  inset: 0;
+  background: white;
+  z-index: 100;
+  transform-origin: center 40%;
+  pointer-events: none;
+  animation: hacked-crt-off 1s cubic-bezier(0.65, 0, 0.25, 1) forwards;
+  animation-play-state: paused;
+}
+
+.reveal .slides section.present .hacked-screen-off {
+  animation-play-state: running;
+}
+
+@keyframes hacked-crt-off {
+  0%   { transform: scaleY(1)    scaleX(1);     opacity: 1; }
+  50%  { transform: scaleY(0.03) scaleX(1);     opacity: 1; }
+  68%  { transform: scaleY(0.03) scaleX(1);     opacity: 1; }
+  90%  { transform: scaleY(0.03) scaleX(0.003); opacity: 1; }
+  100% { transform: scaleY(0)    scaleX(0);     opacity: 0; }
+}
+
+/* Typewriter container — fills the slide and centers the line */
+.hacked-typewriter-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* The typed line itself — text appears char by char with a blinking cursor.
+   Same trick: animations paused until the slide is .present */
+.hacked-typewriter {
+  font-family: 'Courier New', 'Menlo', monospace;
+  color: #00ff41;
+  font-size: 3.2em;
+  font-weight: bold;
+  text-shadow: 0 0 12px #00ff4180, 0 0 24px #00ff4140;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.08em solid #00ff41;
+  width: 0;
+  animation:
+    hacked-typing 1.8s steps(23, end) 1.05s forwards,
+    hacked-cursor-blink 0.7s step-end infinite 1.05s;
+  animation-play-state: paused, paused;
+}
+
+.reveal .slides section.present .hacked-typewriter {
+  animation-play-state: running, running;
+}
+
+@keyframes hacked-typing {
+  from { width: 0; }
+  to   { width: 23ch; }
+}
+
+@keyframes hacked-cursor-blink {
+  50% { border-right-color: transparent; }
+}

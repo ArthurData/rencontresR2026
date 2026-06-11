@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Demo XSS</title>
+  <style>
+    /* Demo: rend alert() visible en bandeau rouge a l'ecran pour la presentation */
+    .xss-alert {
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #dc2626;
+      color: white;
+      padding: 24px 48px;
+      font-family: system-ui, sans-serif;
+      font-size: 32px;
+      font-weight: bold;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      z-index: 99999;
+    }
+  </style>
+  <script>
+    // Demo: on intercepte alert() pour qu'il s'affiche dans le DOM
+    // (le dialog natif n'est pas visible dans un screencast)
+    window.alert = (msg) => {
+      const div = document.createElement('div');
+      div.className = 'xss-alert';
+      div.textContent = '🚨 alert("' + msg + '")';
+      document.body.appendChild(div);
+    };
+  </script>
+</head>
+
+<body>
+  <h2>Ton message :</h2>
+  <div>{{message}}</div>
+</body>
+
+</html>

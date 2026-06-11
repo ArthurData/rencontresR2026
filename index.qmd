@@ -1,0 +1,877 @@
+---
+title: "Pierrot s'est fait pirater"
+subtitle: "Sécuriser ses applications Shiny"
+format:
+  thinkridentity-revealjs:
+    theme: custom.scss
+    slideNumber: false
+chalkboard: false
+author: <a href="https://arthurdata.github.io/rencontresR2026" target="_blank">🔗 arthurdata.github.io/rencontresR2026</a>
+include-before-body: assets/ground.html
+date: last-modified
+---
+
+# Bonjour
+
+## Il y a 3 ans... {auto-animate=true}
+
+:::: {.columns}
+::: {.column width="45%"}
+::: {.fragment .fade-right data-id="pierrot"}
+{{< quarto-lottie src=https://lottie.host/5f2ed099-4737-471d-a199-96b7786d7c88/JhebxcrsLV.json >}}
+:::
+:::
+
+::: {.column width="55%"}
+::: {.fragment .fade-left}
+Aux <a href="https://arthurdata.github.io/rencontresR2023/#/title-slide" target="_blank">🔗 Rencontres R 2023</a>, Pierrot **maquettait** son application Shiny.
+:::
+
+::: {.fragment .fade-left}
+*La cuisine se dessine.*
+:::
+:::
+::::
+
+## Il y a 1 an... {auto-animate=true}
+
+:::: {.columns}
+::: {.column width="45%"}
+::: {data-id="pierrot"}
+{{< quarto-lottie src=https://lottie.host/5f2ed099-4737-471d-a199-96b7786d7c88/JhebxcrsLV.json >}}
+:::
+:::
+
+::: {.column width="55%"}
+::: {.fragment .fade-left}
+Aux <a href="https://arthurdata.github.io/rencontresR2025" target="_blank">🔗 Rencontres R 2025</a>, Pierrot **testait** son application Shiny.
+:::
+
+::: {.fragment .fade-left}
+*La cuisine est solide : tiroirs testés, modules emboîtés, repas cuisiné.*
+:::
+:::
+::::
+
+## Pierrot 2026 {auto-animate=true}
+
+:::: {.columns}
+::: {.column width="45%"}
+::: {data-id="pierrot"}
+{{< quarto-lottie src=https://lottie.host/5f2ed099-4737-471d-a199-96b7786d7c88/JhebxcrsLV.json >}}
+:::
+:::
+
+::: {.column width="55%"}
+### Pierrot est fier
+
+::: {.fragment .fade-left}
+Son application est **maquettée**.
+:::
+
+::: {.fragment .fade-left}
+Elle est **testée**.
+:::
+
+::: {.fragment .fade-left}
+Elle est **en production** chez son client.
+:::
+
+::: {.fragment .fade-left}
+*Tout va bien.*
+:::
+:::
+::::
+
+## ... jusqu'à ce matin {auto-animate=true}
+
+:::: {.columns}
+::: {.column width="45%"}
+::: {data-id="pierrot"}
+{{< quarto-lottie src=https://lottie.host/5f2ed099-4737-471d-a199-96b7786d7c88/JhebxcrsLV.json >}}
+:::
+:::
+
+::: {.column width="55%"}
+::: {.fragment .fade-left}
+### Le coup de fil
+
+> 📞 *"Pierrot, on a un gros problème avec l'app..."*
+:::
+
+:::
+::::
+
+# {background-color="black"}
+
+<div class="hacked-screen-off"></div>
+
+::: {.hacked-typewriter-wrap}
+::: {.hacked-typewriter}
+\> Vous avez été piratés.
+:::
+:::
+
+## La cuisine cambriolée
+
+:::: {.columns}
+::: {.column width="45%"}
+{{< quarto-lottie src=https://lottie.host/5f2ed099-4737-471d-a199-96b7786d7c88/JhebxcrsLV.json >}}
+:::
+
+::: {.column width="55%"}
+### La belle cuisine de Pierrot...
+
+::: {.fragment .fade-left}
+La porte forcée
+:::
+
+::: {.fragment .fade-left}
+Les tiroirs vidés
+:::
+
+::: {.fragment .fade-left}
+Le coffre-fort ouvert
+:::
+:::
+::::
+
+## Les craintes de Pierrot...
+
+:::: {.columns}
+::: {.column width="50%"}
+### Ce qu'il avait prévu
+
+::: {.fragment .fade-left}
+✅ Mal montée
+
+✅ Pas robuste
+
+✅ Mal testée
+:::
+:::
+
+::: {.column width="50%"}
+### Ce qu'il avait oublié
+
+::: {.fragment .fade-left}
+❓ Cambriolée
+:::
+:::
+::::
+
+## Pierrot n'avait pas pensé à...
+
+::: {.fragment .fade-in}
+### ... la sécurité 🔐
+:::
+
+## La sécurité fait partie du métier
+
+Au même titre que :
+
+::: {.fragment .fade-left}
+✅ Les **tests**
+:::
+
+::: {.fragment .fade-left}
+✅ La **documentation**
+:::
+
+\
+
+::: {.fragment .fade-in}
+*Pas réservée aux experts en cybersécurité. C'est notre métier de dev.*
+:::
+
+## Bonne nouvelle : Shiny est bien foutu
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {.toto}
+🔗 `shiny::runApp("security/apps/reprex1")`
+:::
+<video src="assets/videos/reprex1.webm" autoplay loop muted playsinline style="width:100%"></video>
+:::
+
+::: {.column width="30%"}
+::: {.fragment .fade-left}
+Inputs ≈ **strings**.
+:::
+
+::: {.fragment .fade-left}
+On tape :
+
+`<script>alert()</script>`{style="font-size: 0.88rem"}
+:::
+
+::: {.fragment .fade-left}
+✅ Pas d'évaluation = *safe*.
+
+:::
+:::
+::::
+
+## Mauvaise nouvelle
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {.toto}
+🔗 `shiny::runApp("security/apps/reprex2")`
+:::
+<video src="assets/videos/reprex2.webm" autoplay loop muted playsinline style="width:100%"></video>
+:::
+
+::: {.column width="30%"}
+::: {.fragment .fade-left}
+Une seule diff : `HTML(input$message)` au lieu de `input$message`.
+:::
+
+::: {.fragment .fade-left}
+On tape :
+
+`<script>alert()</script>`{style="font-size: 0.88rem"}
+
+💥 le script s'exécute.
+:::
+
+::: {.fragment .fade-left}
+🐛 Faille **XSS**
+:::
+:::
+::::
+
+## L'injection de code
+
+**Le principe** : injecter du code malveillant qui sera ensuite exécuté par l'application.
+
+\
+
+::: {.fragment .fade-in}
+### 3 grandes familles
+:::
+
+::: {.fragment .fade-left}
+🐛 **XSS (Cross-Site Scripting)** : côté navigateur (client)
+:::
+
+::: {.fragment .fade-left}
+🐛 **Command Injection** : côté serveur
+:::
+
+::: {.fragment .fade-left}
+🐛 **SQL Injection** : côté base de données
+:::
+
+\
+
+::: {.fragment .fade-in}
+*Le point commun : exploiter l'absence de validation des données utilisateur.*
+:::
+
+# Command Injection
+
+## Command Injection
+
+### Du code R exécuté côté serveur
+
+::: {.fragment .fade-left}
+Une **saisie utilisateur** depuis l'interface...
+:::
+
+::: {.fragment .fade-left}
+...**Évaluée** par l'application...
+:::
+
+::: {.fragment .fade-left}
+➜ N'importe qui peut exécuter du code R sur **votre** serveur.
+
+_Lecture de fichiers, accès au système, exfiltration de secrets_
+:::
+
+## Command Injection — Reprex safe
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {.toto}
+🔗 `shiny::runApp("security/apps/reprex3")`
+:::
+<video src="assets/videos/reprex3.webm" autoplay loop muted playsinline style="width:100%"></video>
+:::
+
+::: {.column width="30%"}
+`glue("Ton choix est : {input$xyz}")`{style="font-size: 0.88rem"}
+
+::: {.fragment .fade-left}
+On tape :
+
+`Hello {1+1}`{style="font-size: 0.88rem"}
+
+L'input reste une **string**, jamais évaluée comme du code.
+:::
+
+::: {.fragment .fade-left}
+✅ Pas d'évaluation = *safe*.
+:::
+:::
+::::
+
+## La feature évolue... {auto-animate=true}
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {.toto}
+🔗 `shiny::runApp("security/apps/reprex4")`
+:::
+<video data-id="reprex4-video" src="assets/videos/reprex4.webm" autoplay loop muted playsinline style="width:100%"></video>
+:::
+
+::: {.column width="30%"}
+`glue(input$xyz)`{style="font-size: 0.88rem"}
+
+::: {.fragment .fade-left data-id="reprex4-intro"}
+
+L'input est traité comme **du code à interpréter**, plus comme du contenu.
+:::
+
+::: {.fragment .fade-left}
+On tape :
+
+`Hello 1+1`{style="font-size: 0.88rem"}
+
+✅ Pas d'évaluation = *safe*.
+:::
+:::
+::::
+
+## La feature évolue... {auto-animate=true}
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {.toto}
+🔗 `shiny::runApp("security/apps/reprex4")`
+:::
+<video data-id="reprex4-video" src="assets/videos/reprex4.webm" autoplay loop muted playsinline style="width:100%"></video>
+:::
+
+::: {.column width="30%"}
+::: {data-id="reprex4-intro"}
+`glue(input$xyz)`{style="font-size: 0.88rem"}
+
+L'input est traité comme **du code à interpréter**, plus comme du contenu.
+:::
+
+::: {.fade-left}
+On rajoute les accolades :
+
+`Hello {1+1}`{style="font-size: 0.88rem"}
+
+→ `Hello 2`.
+:::
+
+::: {.fragment .fade-left}
+💥 L'input est **évalué comme du code**.
+:::
+:::
+::::
+
+## Démo offensive
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {.toto}
+🔗 `shiny::runApp("security/apps/reprex4")`
+:::
+<video src="assets/videos/offensive.webm" autoplay loop muted playsinline style="width:100%"></video>
+:::
+
+::: {.column width="30%"}
+```r
+{system("ls /")}
+{readLines("/etc/passwd")}
+{system("whoami")}
+{system("rm -rf /")}
+{system("useradd hacker")}
+```
+
+...oups 🙊
+:::
+::::
+
+## Pourquoi c'est sournois
+
+::: {.fragment .fade-left}
+`glue(input$template)` ≈ `eval(parse(text = input$template))`
+:::
+
+::: {.fragment .fade-left}
+\
+
+Mais `glue()` est **plus discret** car il évalue automatiquement ce qu'il y a entre `{}`.
+:::
+
+\
+
+::: {.fragment .fade-in}
+### 🥇 Bonne pratique #1
+
+Figer le template :
+
+```r
+glue("{input$template}")
+```
+:::
+
+## "Mais j'ai un `selectInput` !"
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {.toto}
+🔗 `shiny::runApp("security/apps/reprex5")`
+:::
+<video src="assets/videos/reprex5.webm" autoplay loop muted playsinline style="width:100%"></video>
+:::
+
+::: {.column width="30%"}
+::: {.fragment .fade-left}
+`selectInput` → 3 choix uniquement... côté UI.
+:::
+
+::: {.fragment .fade-left}
+Console navigateur :
+
+`Shiny.setInputValue("color", "{1+1}")`{style="font-size: 0.8rem"}
+
+💥 `selectInput` contourné.
+:::
+:::
+::::
+
+## 🥇 Bonne pratique #2
+
+### Valider côté **serveur**
+
+```r
+input_color <- match.arg(
+  input$color,
+  choices = c("red", "green", "blue")
+)
+```
+
+::: {.fragment .fade-left}
+Ou via `switch()` / `if` selon le besoin.
+:::
+
+::: {.fragment .fade-in}
+\
+
+[*Toute donnée venant du client doit être validée serveur-side. Toujours.*]{.relevant}
+:::
+
+## Insecure Deserialization
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {.toto}
+🔗 `shiny::runApp("security/apps/reprex6")`
+:::
+<video src="assets/videos/reprex6.webm" autoplay loop muted playsinline style="width:100%"></video>
+:::
+
+::: {.column width="30%"}
+::: {.fragment .fade-left}
+Un `.rds` généré par l'attaquant :
+
+```r
+evil <- function() {
+  system("touch /tmp/hacked")
+}
+saveRDS(evil, "evil.rds")
+```
+:::
+
+::: {.fragment .fade-left}
+Du code **s'exécute à l'utilisation** de l'objet, pas à `readRDS()`.
+
+💥 Code attaquant exécuté côté serveur.
+:::
+:::
+::::
+
+## 🥇 Bonne pratique #3
+
+### Privilégier des formats *simples*
+
+::: {.fragment .fade-left}
+✅ `.csv`, `.txt`, `.json` — du **contenu**, pas du code sérialisé.
+:::
+
+::: {.fragment .fade-left}
+🛡️ Si vraiment besoin d'un `.rds` : **sandbox**.
+
+(`callr`, `processx` en environnement restreint, container...)
+:::
+
+## {.center background-color="#4169ed"}
+
+### Règle n°1
+
+### [*Ne fais jamais confiance à l'entrée utilisateur, quel que soit le contexte.*]{.relevant}
+
+# SQL Injection
+
+## SQL Injection
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {.toto}
+🔗 `shiny::runApp("security/apps/reprex7")`
+:::
+<video src="assets/videos/reprex7.webm" autoplay loop muted playsinline style="width:100%"></video>
+:::
+
+::: {.column width="30%"}
+::: {.fragment .fade-left}
+`paste0("SELECT … WHERE id = ", input$x)`{style="font-size: 0.78rem"}
+:::
+
+::: {.fragment .fade-left}
+Tape `1` ➜ Robert ✅
+:::
+
+::: {.fragment .fade-left}
+Tape `1 OR 1=1` ➜ **toute la table** 💥
+:::
+:::
+::::
+
+## Démos offensives
+
+```sql
+1 OR 1=1
+```
+
+**Fuite** : on récupère **toutes** les lignes de la table.
+
+
+\
+
+::: {.fragment .fade-in}
+```sql
+1; DROP TABLE users
+```
+
+**Destruction** : selon le driver, la table disparaît.
+:::
+
+## "Mais j'ai un `selectInput` !" (bis)
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {.toto}
+🔗 `shiny::runApp("security/apps/reprex8")`
+:::
+<video src="assets/videos/reprex8.webm" autoplay loop muted playsinline style="width:100%"></video>
+:::
+
+::: {.column width="30%"}
+::: {.fragment .fade-left}
+`selectInput` → 5 IDs uniquement... côté UI.
+:::
+
+::: {.fragment .fade-left}
+Console navigateur :
+
+`Shiny.setInputValue("user_input", "1 OR 1=1")`{style="font-size: 0.88rem"}
+
+💥 Même fuite, malgré le `selectInput`.
+:::
+:::
+::::
+
+## 🥇 Bonne pratique #4 {auto-animate=true}
+
+:::: {.columns}
+::: {.column width="50%"}
+**❌ Avant**
+
+```r
+rv$query <- paste0(
+  "SELECT * FROM users WHERE id = ",
+  input$user_input
+)
+rv$result <- dbGetQuery(
+  con, rv$query
+)
+```
+:::
+
+::: {.column width="50%"}
+**✅ Avec `sqlInterpolate`**
+
+```r
+rv$query <- sqlInterpolate(
+  con,
+  "SELECT * FROM users WHERE id = ?id",
+  id = input$user_input
+)
+rv$result <- dbGetQuery(
+  con, rv$query
+)
+```
+:::
+::::
+
+::: {.fragment .fade-left}
+*Même attaque `1 OR 1=1` ➜ requête vide, table intacte.*
+:::
+
+## 🥇 Bonne pratique #4 {auto-animate=true}
+
+:::: {.columns}
+::: {.column width="50%"}
+**❌ Avant**
+
+```r
+rv$query <- paste0(
+  "SELECT * FROM users WHERE id = ",
+  input$user_input
+)
+rv$result <- dbGetQuery(
+  con, rv$query
+)
+```
+:::
+
+::: {.column width="50%"}
+**✅ Ou avec `glue_sql`**
+
+```r
+rv$query <- glue_sql(
+  "SELECT * FROM users WHERE id = {input$user_input}",
+  .con = con
+)
+rv$result <- dbGetQuery(
+  con, rv$query
+)
+```
+:::
+::::
+
+::: {.fragment .fade-left}
+<a href="https://shiny.posit.co/r/articles/build/sql-injections/" target="_blank">📖 shiny.posit.co/r/articles/build/sql-injections/</a>
+:::
+
+# XSS
+
+## XSS : Cross-Site Scripting
+
+### Du code JS exécuté **côté navigateur**
+
+::: {.fragment .fade-left}
+L'attaquant injecte du code dans une page...
+:::
+
+::: {.fragment .fade-left}
+...stocké côté serveur ou simplement reflété...
+:::
+
+::: {.fragment .fade-left}
+➜ exécuté chez **tous les visiteurs** qui consultent la page.
+:::
+
+## XSS : Un mur de commentaires {auto-animate=true}
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {.toto}
+🔗 `shiny::runApp("security/apps/reprex11")`
+:::
+<video src="assets/videos/reprex11-act1.webm" autoplay loop muted playsinline style="width:100%"></video>
+:::
+
+::: {.column width="30%"}
+::: {.fragment .fade-left}
+Pierrot poste un message :
+
+`Salut tout le monde !`{style="font-size: 0.85rem"}
+:::
+
+::: {.fragment .fade-left}
+Tout fonctionne ✅
+:::
+:::
+::::
+
+## XSS : Un attaquant arrive {auto-animate=true}
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {.toto}
+🔗 `shiny::runApp("security/apps/reprex11")`
+:::
+<video src="assets/videos/reprex11-act2.webm" autoplay loop muted playsinline style="width:100%"></video>
+:::
+
+::: {.column width="30%"}
+::: {.fragment .fade-left}
+Un autre poste :
+
+`<script>alert(...)</script>`{style="font-size: 0.75rem"}
+:::
+
+::: {.fragment .fade-left}
+💥 Alert chez tous les visiteurs.
+:::
+
+::: {.fragment .fade-left}
+Et **à chaque rechargement** : ça repart.
+:::
+:::
+::::
+
+## XSS : Le vrai vol {auto-animate=true}
+
+:::: {.columns}
+::: {.column width="70%"}
+::: {.toto}
+🔗 `shiny::runApp("security/apps/reprex11")`
+:::
+<video src="assets/videos/reprex11-act3.webm" autoplay loop muted playsinline style="width:100%"></video>
+:::
+
+::: {.column width="30%"}
+::: {.fragment .fade-left}
+L'attaquant raffine :
+
+```html
+<script>
+  ...createElement("button")...
+  fakeBtn.onclick = ...
+  document.body.prepend(fakeBtn);
+</script>
+```
+:::
+
+::: {.fragment .fade-left}
+💥 Faux bouton de **connexion** pour tous.
+:::
+
+::: {.fragment .fade-left}
+➜ Vol silencieux des credentials.
+:::
+:::
+::::
+
+## 🥇 Bonne pratique #5
+
+### Échapper le contenu utilisateur avec `htmltools::htmlEscape()`
+
+:::: {.columns}
+::: {.column width="50%"}
+**❌ Avant**
+
+```r
+glue::glue(
+  "<p><strong>{row$pseudo}</strong>",
+  " : {row$message}</p>"
+)
+```
+:::
+
+::: {.column width="50%"}
+**✅ Après**
+
+```r
+glue::glue(
+  "<p><strong>{htmlEscape(row$pseudo)}</strong>",
+  " : {htmlEscape(row$message)}</p>"
+)
+```
+:::
+::::
+
+::: {.fragment .fade-left}
+*Le `<script>` devient du texte affiché, pas exécuté.*
+:::
+
+::: {.fragment .fade-left}
+À appliquer sur **tout** contenu utilisateur : pseudo *et* message.
+:::
+
+# La cuisine sécurisée de Pierrot
+
+## La cuisine sécurisée de Pierrot
+
+:::: {.columns}
+::: {.column width="45%"}
+{{< quarto-lottie src=https://lottie.host/5f2ed099-4737-471d-a199-96b7786d7c88/JhebxcrsLV.json >}}
+:::
+
+::: {.column width="55%"}
+### Les 3 portes à fermer
+
+::: {.fragment .fade-left}
+🐛 **Command Injection** : jamais évaluer un input
+:::
+
+::: {.fragment .fade-left}
+🐛 **SQL Injection** : `sqlInterpolate()` ou `glue_sql()`, toujours
+:::
+
+::: {.fragment .fade-left}
+🐛 **XSS** : `htmlEscape()` tout ce qui s'affiche
+:::
+
+::: {.fragment .fade-left}
+\
+
+🔐 **Et la règle n°1** : ne jamais faire confiance à l'utilisateur
+:::
+:::
+::::
+
+## Et tout ce qu'on n'a pas eu le temps de voir
+
+::: {.fragment .fade-left}
+🔑 **L'authentification** : `shinymanager`, Posit Connect, OAuth...
+*C'est un autre sujet, mais essentiel.*
+:::
+
+::: {.fragment .fade-left}
+\
+
+📦 **Les dépendances à jour** : pas de Dependabot natif en R.
+
+Mise à jour régulière, surveillance manuelle des annonces upstream des paquets critiques.
+:::
+
+## Pour aller plus loin
+
+### S'entraîner
+
+<a href="https://connect.thinkr.fr/hackthisshiny/" target="_blank">🔗 connect.thinkr.fr/hackthisshiny/</a>
+
+### Lectures
+
+<a href="https://shiny.posit.co/r/articles/build/sql-injections/" target="_blank">🔗 shiny.posit.co/r/articles/build/sql-injections/</a>
+
+<a href="https://fr.vuejs.org/guide/best-practices/security" target="_blank">🔗 vuejs.org/guide/best-practices/security</a>
+
+## Merci
+
+:::: {.columns}
+::: {.column width="45%"}
+{{< quarto-lottie src=https://lottie.host/5f2ed099-4737-471d-a199-96b7786d7c88/JhebxcrsLV.json >}}
+:::
+
+::: {.column width="55%"}
+### Des questions ?
+
+<a href="https://arthurdata.github.io/rencontresR2026" target="_blank">🔗 arthurdata.github.io/rencontresR2026</a>
+
+\
+
+*Pierrot vous remercie.*
+:::
+::::
