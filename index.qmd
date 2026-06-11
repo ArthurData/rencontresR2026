@@ -9,7 +9,7 @@ chalkboard: false
 author: <a href="https://arthurdata.github.io/rencontresR2026" target="_blank">🔗 arthurdata.github.io/rencontresR2026</a>
 include-before-body: assets/ground.html
 include-after-body: assets/reset-videos.html
-date: last-modified
+date: 2026-06-16
 resources:
   - assets/videos/*.webm
   - assets/ground.html
