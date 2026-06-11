@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/tabby.min.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/quarto-contrib/quarto-lottie-v2.0.1/lottie-player.js"></script><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.37">
+
+  <meta name="author" content="🔗 arthurdata.github.io/rencontresR2026">
+  <meta name="dcterms.date" content="2026-06-11">
+  <title>Pierrot s’est fait pirater</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-5c984e4d4eb6eff0c1b835aca2463dbd.css">
+  <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+<div class="ground"></div>
+<div class="sun"></div>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="_extensions/ThinkR-open/thinkridentity/background.png" class="quarto-title-block center">
+  <h1 class="title">Pierrot s’est fait pirater</h1>
+  <p class="subtitle">Sécuriser ses applications Shiny</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="https://arthurdata.github.io/rencontresR2026" target="_blank">🔗 arthurdata.github.io/rencontresR2026</a> 
+</div>
+</div>
+</div>
+
+  <p class="date">2026-06-11</p>
+</section>
+<section>
+<section id="bonjour" class="title-slide slide level1 center">
+<h1>Bonjour</h1>
+
+</section>
+<section id="il-y-a-3-ans" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Il y a 3 ans…</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="fragment fade-right" data-id="pierrot">
+    <lottie-player src="https://lottie.host/5f2ed099-4737-471d-a199-96b7786d7c88/JhebxcrsLV.json" background="transparent" speed="01" style="width:500px; height:500px;" loop="" autoplay=""></lottie-player>
+  
+</div>
+</div><div class="column" style="width:55%;">
+<div class="fragment fade-left">
+<p>Aux <a href="https://arthurdata.github.io/rencontresR2023/#/title-slide" target="_blank">🔗 Rencontres R 2023</a>, Pierrot <strong>maquettait</strong> son application Shiny.</p>
+</div>
+<div class="fragment fade-left">
+<p><em>La cuisine se dessine.</em></p>
+</div>
+</div></div>
+</section>
+<section id="il-y-a-1-an" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Il y a 1 an…</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div data-id="pierrot">
+    <lottie-player src="https://lottie.host/5f2ed099-4737-471d-a199-96b7786d7c88/JhebxcrsLV.json" background="transparent" speed="01" style="width:500px; height:500px;" loop="" autoplay=""></lottie-player>
+  
+</div>
+</div><div class="column" style="width:55%;">
+<div class="fragment fade-left">
+<p>Aux <a href="https://arthurdata.github.io/rencontresR2025" target="_blank">🔗 Rencontres R 2025</a>, Pierrot <strong>testait</strong> son application Shiny.</p>
+</div>
+<div class="fragment fade-left">
+<p><em>La cuisine est solide : tiroirs testés, modules emboîtés, repas cuisiné.</em></p>
+</div>
+</div></div>
+</section>
+<section id="pierrot-2026" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Pierrot 2026</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div data-id="pierrot">
+    <lottie-player src="https://lottie.host/5f2ed099-4737-471d-a199-96b7786d7c88/JhebxcrsLV.json" background="transparent" speed="01" style="width:500px; height:500px;" loop="" autoplay=""></lottie-player>
+  
+</div>
+</div><div class="column" style="width:55%;">
+<h3 id="pierrot-est-fier">Pierrot est fier</h3>
+<div class="fragment fade-left">
+<p>Son application est <strong>maquettée</strong>.</p>
+</div>
+<div class="fragment fade-left">
+<p>Elle est <strong>testée</strong>.</p>
+</div>
+<div class="fragment fade-left">
+<p>Elle est <strong>en production</strong> chez son client.</p>
+</div>
+<div class="fragment fade-left">
+<p><em>Tout va bien.</em></p>
+</div>
+</div></div>
+</section>
+<section id="jusquà-ce-matin" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">… jusqu’à ce matin</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div data-id="pierrot">
+    <lottie-player src="https://lottie.host/5f2ed099-4737-471d-a199-96b7786d7c88/JhebxcrsLV.json" background="transparent" speed="01" style="width:500px; height:500px;" loop="" autoplay=""></lottie-player>
+  
+</div>
+</div><div class="column" style="width:55%;">
+<div class="fragment fade-left">
+<h3 id="le-coup-de-fil">Le coup de fil</h3>
+<blockquote>
+<p>📞 <em>“Pierrot, on a un gros problème avec l’app…”</em></p>
+</blockquote>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="section" class="title-slide slide level1 center" data-background-color="black">
+<h1></h1>
+<div class="hacked-screen-off">
+
+</div>
+<div class="hacked-typewriter-wrap">
+<div class="hacked-typewriter">
+<p>&gt; Vous avez été piratés.</p>
+</div>
+</div>
+</section>
+<section id="la-cuisine-cambriolée" class="slide level2">
+<h2>La cuisine cambriolée</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+    <lottie-player src="https://lottie.host/5f2ed099-4737-471d-a199-96b7786d7c88/JhebxcrsLV.json" background="transparent" speed="01" style="width:500px; height:500px;" loop="" autoplay=""></lottie-player>
+  
+</div><div class="column" style="width:55%;">
+<h3 id="la-belle-cuisine-de-pierrot">La belle cuisine de Pierrot…</h3>
+<div class="fragment fade-left">
+<p>La porte forcée</p>
+</div>
+<div class="fragment fade-left">
+<p>Les tiroirs vidés</p>
+</div>
+<div class="fragment fade-left">
+<p>Le coffre-fort ouvert</p>
+</div>
+</div></div>
+</section>
+<section id="les-craintes-de-pierrot" class="slide level2">
+<h2>Les craintes de Pierrot…</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="ce-quil-avait-prévu">Ce qu’il avait prévu</h3>
+<div class="fragment fade-left">
+<p>✅ Mal montée</p>
+<p>✅ Pas robuste</p>
+<p>✅ Mal testée</p>
+</div>
+</div><div class="column" style="width:50%;">
+<h3 id="ce-quil-avait-oublié">Ce qu’il avait oublié</h3>
+<div class="fragment fade-left">
+<p>❓ Cambriolée</p>
+</div>
+</div></div>
+</section>
+<section id="pierrot-navait-pas-pensé-à" class="slide level2">
+<h2>Pierrot n’avait pas pensé à…</h2>
+<div class="fragment fade-in">
+<h3 id="la-sécurité">… la sécurité 🔐</h3>
+</div>
+</section>
+<section id="la-sécurité-fait-partie-du-métier" class="slide level2">
+<h2>La sécurité fait partie du métier</h2>
+<p>Au même titre que :</p>
+<div class="fragment fade-left">
+<p>✅ Les <strong>tests</strong></p>
+</div>
+<div class="fragment fade-left">
+<p>✅ La <strong>documentation</strong></p>
+</div>
+<p><br>
+</p>
+<div class="fragment fade-in">
+<p><em>Pas réservée aux experts en cybersécurité. C’est notre métier de dev.</em></p>
+</div>
+</section>
+<section id="bonne-nouvelle-shiny-est-bien-foutu" class="slide level2">
+<h2>Bonne nouvelle : Shiny est bien foutu</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="toto">
+<p>🔗 <code>shiny::runApp("security/apps/reprex1")</code></p>
+</div>
+<video src="assets/videos/reprex1.webm" autoplay="" loop="" muted="" playsinline="" style="width:100%">
+</video>
+</div><div class="column" style="width:30%;">
+<div class="fragment fade-left">
+<p>Inputs ≈ <strong>strings</strong>.</p>
+</div>
+<div class="fragment fade-left">
+<p>On tape :</p>
+<p><code style="font-size: 0.88rem">&lt;script&gt;alert()&lt;/script&gt;</code></p>
+</div>
+<div class="fragment fade-left">
+<p>✅ Pas d’évaluation = <em>safe</em>.</p>
+</div>
+</div></div>
+</section>
+<section id="mauvaise-nouvelle" class="slide level2">
+<h2>Mauvaise nouvelle</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="toto">
+<p>🔗 <code>shiny::runApp("security/apps/reprex2")</code></p>
+</div>
+<video src="assets/videos/reprex2.webm" autoplay="" loop="" muted="" playsinline="" style="width:100%">
+</video>
+</div><div class="column" style="width:30%;">
+<div class="fragment fade-left">
+<p>Une seule diff : <code>HTML(input$message)</code> au lieu de <code>input$message</code>.</p>
+</div>
+<div class="fragment fade-left">
+<p>On tape :</p>
+<p><code style="font-size: 0.88rem">&lt;script&gt;alert()&lt;/script&gt;</code></p>
+<p>💥 le script s’exécute.</p>
+</div>
+<div class="fragment fade-left">
+<p>🐛 Faille <strong>XSS</strong></p>
+</div>
+</div></div>
+</section>
+<section id="linjection-de-code" class="slide level2">
+<h2>L’injection de code</h2>
+<p><strong>Le principe</strong> : injecter du code malveillant qui sera ensuite exécuté par l’application.</p>
+<p><br>
+</p>
+<div class="fragment fade-in">
+<h3 id="grandes-familles">3 grandes familles</h3>
+</div>
+<div class="fragment fade-left">
+<p>🐛 <strong>XSS (Cross-Site Scripting)</strong> : côté navigateur (client)</p>
+</div>
+<div class="fragment fade-left">
+<p>🐛 <strong>Command Injection</strong> : côté serveur</p>
+</div>
+<div class="fragment fade-left">
+<p>🐛 <strong>SQL Injection</strong> : côté base de données</p>
+</div>
+<p><br>
+</p>
+<div class="fragment fade-in">
+<p><em>Le point commun : exploiter l’absence de validation des données utilisateur.</em></p>
+</div>
+</section></section>
+<section>
+<section id="command-injection" class="title-slide slide level1 center">
+<h1>Command Injection</h1>
+
+</section>
+<section id="command-injection-1" class="slide level2">
+<h2>Command Injection</h2>
+<h3 id="du-code-r-exécuté-côté-serveur">Du code R exécuté côté serveur</h3>
+<div class="fragment fade-left">
+<p>Une <strong>saisie utilisateur</strong> depuis l’interface…</p>
+</div>
+<div class="fragment fade-left">
+<p>…<strong>Évaluée</strong> par l’application…</p>
+</div>
+<div class="fragment fade-left">
+<p>➜ N’importe qui peut exécuter du code R sur <strong>votre</strong> serveur.</p>
+<p><em>Lecture de fichiers, accès au système, exfiltration de secrets</em></p>
+</div>
+</section>
+<section id="command-injection-reprex-safe" class="slide level2">
+<h2>Command Injection — Reprex safe</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="toto">
+<p>🔗 <code>shiny::runApp("security/apps/reprex3")</code></p>
+</div>
+<video src="assets/videos/reprex3.webm" autoplay="" loop="" muted="" playsinline="" style="width:100%">
+</video>
+</div><div class="column" style="width:30%;">
+<p><code style="font-size: 0.88rem">glue("Ton choix est : {input$xyz}")</code></p>
+<div class="fragment fade-left">
+<p>On tape :</p>
+<p><code style="font-size: 0.88rem">Hello {1+1}</code></p>
+<p>L’input reste une <strong>string</strong>, jamais évaluée comme du code.</p>
+</div>
+<div class="fragment fade-left">
+<p>✅ Pas d’évaluation = <em>safe</em>.</p>
+</div>
+</div></div>
+</section>
+<section id="la-feature-évolue" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">La feature évolue…</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="toto">
+<p>🔗 <code>shiny::runApp("security/apps/reprex4")</code></p>
+</div>
+<video data-id="reprex4-video" src="assets/videos/reprex4.webm" autoplay="" loop="" muted="" playsinline="" style="width:100%">
+</video>
+</div><div class="column" style="width:30%;">
+<p><code style="font-size: 0.88rem">glue(input$xyz)</code></p>
+<div class="fragment fade-left" data-id="reprex4-intro">
+<p>L’input est traité comme <strong>du code à interpréter</strong>, plus comme du contenu.</p>
+</div>
+<div class="fragment fade-left">
+<p>On tape :</p>
+<p><code style="font-size: 0.88rem">Hello 1+1</code></p>
+<p>✅ Pas d’évaluation = <em>safe</em>.</p>
+</div>
+</div></div>
+</section>
+<section id="la-feature-évolue-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">La feature évolue…</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="toto">
+<p>🔗 <code>shiny::runApp("security/apps/reprex4")</code></p>
+</div>
+<video data-id="reprex4-video" src="assets/videos/reprex4.webm" autoplay="" loop="" muted="" playsinline="" style="width:100%">
+</video>
+</div><div class="column" style="width:30%;">
+<div data-id="reprex4-intro">
+<p><code style="font-size: 0.88rem">glue(input$xyz)</code></p>
+<p>L’input est traité comme <strong>du code à interpréter</strong>, plus comme du contenu.</p>
+</div>
+<div class="fade-left">
+<p>On rajoute les accolades :</p>
+<p><code style="font-size: 0.88rem">Hello {1+1}</code></p>
+<p>→ <code>Hello 2</code>.</p>
+</div>
+<div class="fragment fade-left">
+<p>💥 L’input est <strong>évalué comme du code</strong>.</p>
+</div>
+</div></div>
+</section>
+<section id="démo-offensive" class="slide level2">
+<h2>Démo offensive</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="toto">
+<p>🔗 <code>shiny::runApp("security/apps/reprex4")</code></p>
+</div>
+<video src="assets/videos/offensive.webm" autoplay="" loop="" muted="" playsinline="" style="width:100%">
+</video>
+</div><div class="column" style="width:30%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>{<span class="fu">system</span>(<span class="st">"ls /"</span>)}</span>
+<span id="cb1-2"><a href=""></a>{<span class="fu">readLines</span>(<span class="st">"/etc/passwd"</span>)}</span>
+<span id="cb1-3"><a href=""></a>{<span class="fu">system</span>(<span class="st">"whoami"</span>)}</span>
+<span id="cb1-4"><a href=""></a>{<span class="fu">system</span>(<span class="st">"rm -rf /"</span>)}</span>
+<span id="cb1-5"><a href=""></a>{<span class="fu">system</span>(<span class="st">"useradd hacker"</span>)}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>…oups 🙊</p>
+</div></div>
+</section>
+<section id="pourquoi-cest-sournois" class="slide level2">
+<h2>Pourquoi c’est sournois</h2>
+<div class="fragment fade-left">
+<p><code>glue(input$template)</code> ≈ <code>eval(parse(text = input$template))</code></p>
+</div>
+<div class="fragment fade-left">
+<p><br>
+</p>
+<p>Mais <code>glue()</code> est <strong>plus discret</strong> car il évalue automatiquement ce qu’il y a entre <code>{}</code>.</p>
+</div>
+<p><br>
+</p>
+<div class="fragment fade-in">
+<h3 id="bonne-pratique-1">🥇 Bonne pratique #1</h3>
+<p>Figer le template :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="fu">glue</span>(<span class="st">"{input$template}"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="mais-jai-un-selectinput" class="slide level2">
+<h2>“Mais j’ai un <code>selectInput</code> !”</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="toto">
+<p>🔗 <code>shiny::runApp("security/apps/reprex5")</code></p>
+</div>
+<video src="assets/videos/reprex5.webm" autoplay="" loop="" muted="" playsinline="" style="width:100%">
+</video>
+</div><div class="column" style="width:30%;">
+<div class="fragment fade-left">
+<p><code>selectInput</code> → 3 choix uniquement… côté UI.</p>
+</div>
+<div class="fragment fade-left">
+<p>Console navigateur :</p>
+<p><code style="font-size: 0.8rem">Shiny.setInputValue("color", "{1+1}")</code></p>
+<p>💥 <code>selectInput</code> contourné.</p>
+</div>
+</div></div>
+</section>
+<section id="bonne-pratique-2" class="slide level2">
+<h2>🥇 Bonne pratique #2</h2>
+<h3 id="valider-côté-serveur">Valider côté <strong>serveur</strong></h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>input_color <span class="ot">&lt;-</span> <span class="fu">match.arg</span>(</span>
+<span id="cb3-2"><a href=""></a>  input<span class="sc">$</span>color,</span>
+<span id="cb3-3"><a href=""></a>  <span class="at">choices =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"green"</span>, <span class="st">"blue"</span>)</span>
+<span id="cb3-4"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="fragment fade-left">
+<p>Ou via <code>switch()</code> / <code>if</code> selon le besoin.</p>
+</div>
+<div class="fragment fade-in">
+<p><br>
+</p>
+<p><span class="relevant"><em>Toute donnée venant du client doit être validée serveur-side. Toujours.</em></span></p>
+</div>
+</section>
+<section id="insecure-deserialization" class="slide level2">
+<h2>Insecure Deserialization</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="toto">
+<p>🔗 <code>shiny::runApp("security/apps/reprex6")</code></p>
+</div>
+<video src="assets/videos/reprex6.webm" autoplay="" loop="" muted="" playsinline="" style="width:100%">
+</video>
+</div><div class="column" style="width:30%;">
+<div class="fragment fade-left">
+<p>Un <code>.rds</code> généré par l’attaquant :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>evil <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb4-2"><a href=""></a>  <span class="fu">system</span>(<span class="st">"touch /tmp/hacked"</span>)</span>
+<span id="cb4-3"><a href=""></a>}</span>
+<span id="cb4-4"><a href=""></a><span class="fu">saveRDS</span>(evil, <span class="st">"evil.rds"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment fade-left">
+<p>Du code <strong>s’exécute à l’utilisation</strong> de l’objet, pas à <code>readRDS()</code>.</p>
+<p>💥 Code attaquant exécuté côté serveur.</p>
+</div>
+</div></div>
+</section>
+<section id="bonne-pratique-3" class="slide level2">
+<h2>🥇 Bonne pratique #3</h2>
+<h3 id="privilégier-des-formats-simples">Privilégier des formats <em>simples</em></h3>
+<div class="fragment fade-left">
+<p>✅ <code>.csv</code>, <code>.txt</code>, <code>.json</code> — du <strong>contenu</strong>, pas du code sérialisé.</p>
+</div>
+<div class="fragment fade-left">
+<p>🛡️ Si vraiment besoin d’un <code>.rds</code> : <strong>sandbox</strong>.</p>
+<p>(<code>callr</code>, <code>processx</code> en environnement restreint, container…)</p>
+</div>
+</section>
+<section id="section-1" class="slide level2 center" data-background-color="#4169ed">
+<h2></h2>
+<h3 id="règle-n1">Règle n°1</h3>
+<h3 id="ne-fais-jamais-confiance-à-lentrée-utilisateur-quel-que-soit-le-contexte."><span class="relevant"><em>Ne fais jamais confiance à l’entrée utilisateur, quel que soit le contexte.</em></span></h3>
+</section></section>
+<section>
+<section id="sql-injection" class="title-slide slide level1 center">
+<h1>SQL Injection</h1>
+
+</section>
+<section id="sql-injection-1" class="slide level2">
+<h2>SQL Injection</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="toto">
+<p>🔗 <code>shiny::runApp("security/apps/reprex7")</code></p>
+</div>
+<video src="assets/videos/reprex7.webm" autoplay="" loop="" muted="" playsinline="" style="width:100%">
+</video>
+</div><div class="column" style="width:30%;">
+<div class="fragment fade-left">
+<p><code style="font-size: 0.78rem">paste0("SELECT … WHERE id = ", input$x)</code></p>
+</div>
+<div class="fragment fade-left">
+<p>Tape <code>1</code> ➜ Robert ✅</p>
+</div>
+<div class="fragment fade-left">
+<p>Tape <code>1 OR 1=1</code> ➜ <strong>toute la table</strong> 💥</p>
+</div>
+</div></div>
+</section>
+<section id="démos-offensives" class="slide level2">
+<h2>Démos offensives</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href=""></a><span class="dv">1</span> <span class="kw">OR</span> <span class="dv">1</span><span class="op">=</span><span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Fuite</strong> : on récupère <strong>toutes</strong> les lignes de la table.</p>
+<p><br>
+</p>
+<div class="fragment fade-in">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href=""></a><span class="dv">1</span>; <span class="kw">DROP</span> <span class="kw">TABLE</span> users</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Destruction</strong> : selon le driver, la table disparaît.</p>
+</div>
+</section>
+<section id="mais-jai-un-selectinput-bis" class="slide level2">
+<h2>“Mais j’ai un <code>selectInput</code> !” (bis)</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="toto">
+<p>🔗 <code>shiny::runApp("security/apps/reprex8")</code></p>
+</div>
+<video src="assets/videos/reprex8.webm" autoplay="" loop="" muted="" playsinline="" style="width:100%">
+</video>
+</div><div class="column" style="width:30%;">
+<div class="fragment fade-left">
+<p><code>selectInput</code> → 5 IDs uniquement… côté UI.</p>
+</div>
+<div class="fragment fade-left">
+<p>Console navigateur :</p>
+<p><code style="font-size: 0.88rem">Shiny.setInputValue("user_input", "1 OR 1=1")</code></p>
+<p>💥 Même fuite, malgré le <code>selectInput</code>.</p>
+</div>
+</div></div>
+</section>
+<section id="bonne-pratique-4" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">🥇 Bonne pratique #4</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>❌ Avant</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>rv<span class="sc">$</span>query <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb7-2"><a href=""></a>  <span class="st">"SELECT * FROM users WHERE id = "</span>,</span>
+<span id="cb7-3"><a href=""></a>  input<span class="sc">$</span>user_input</span>
+<span id="cb7-4"><a href=""></a>)</span>
+<span id="cb7-5"><a href=""></a>rv<span class="sc">$</span>result <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(</span>
+<span id="cb7-6"><a href=""></a>  con, rv<span class="sc">$</span>query</span>
+<span id="cb7-7"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:50%;">
+<p><strong>✅ Avec <code>sqlInterpolate</code></strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>rv<span class="sc">$</span>query <span class="ot">&lt;-</span> <span class="fu">sqlInterpolate</span>(</span>
+<span id="cb8-2"><a href=""></a>  con,</span>
+<span id="cb8-3"><a href=""></a>  <span class="st">"SELECT * FROM users WHERE id = ?id"</span>,</span>
+<span id="cb8-4"><a href=""></a>  <span class="at">id =</span> input<span class="sc">$</span>user_input</span>
+<span id="cb8-5"><a href=""></a>)</span>
+<span id="cb8-6"><a href=""></a>rv<span class="sc">$</span>result <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(</span>
+<span id="cb8-7"><a href=""></a>  con, rv<span class="sc">$</span>query</span>
+<span id="cb8-8"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<div class="fragment fade-left">
+<p><em>Même attaque <code>1 OR 1=1</code> ➜ requête vide, table intacte.</em></p>
+</div>
+</section>
+<section id="bonne-pratique-4-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">🥇 Bonne pratique #4</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>❌ Avant</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>rv<span class="sc">$</span>query <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb9-2"><a href=""></a>  <span class="st">"SELECT * FROM users WHERE id = "</span>,</span>
+<span id="cb9-3"><a href=""></a>  input<span class="sc">$</span>user_input</span>
+<span id="cb9-4"><a href=""></a>)</span>
+<span id="cb9-5"><a href=""></a>rv<span class="sc">$</span>result <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(</span>
+<span id="cb9-6"><a href=""></a>  con, rv<span class="sc">$</span>query</span>
+<span id="cb9-7"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:50%;">
+<p><strong>✅ Ou avec <code>glue_sql</code></strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>rv<span class="sc">$</span>query <span class="ot">&lt;-</span> <span class="fu">glue_sql</span>(</span>
+<span id="cb10-2"><a href=""></a>  <span class="st">"SELECT * FROM users WHERE id = {input$user_input}"</span>,</span>
+<span id="cb10-3"><a href=""></a>  <span class="at">.con =</span> con</span>
+<span id="cb10-4"><a href=""></a>)</span>
+<span id="cb10-5"><a href=""></a>rv<span class="sc">$</span>result <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(</span>
+<span id="cb10-6"><a href=""></a>  con, rv<span class="sc">$</span>query</span>
+<span id="cb10-7"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<div class="fragment fade-left">
+<p><a href="https://shiny.posit.co/r/articles/build/sql-injections/" target="_blank">📖 shiny.posit.co/r/articles/build/sql-injections/</a></p>
+</div>
+</section></section>
+<section>
+<section id="xss" class="title-slide slide level1 center">
+<h1>XSS</h1>
+
+</section>
+<section id="xss-cross-site-scripting" class="slide level2">
+<h2>XSS : Cross-Site Scripting</h2>
+<h3 id="du-code-js-exécuté-côté-navigateur">Du code JS exécuté <strong>côté navigateur</strong></h3>
+<div class="fragment fade-left">
+<p>L’attaquant injecte du code dans une page…</p>
+</div>
+<div class="fragment fade-left">
+<p>…stocké côté serveur ou simplement reflété…</p>
+</div>
+<div class="fragment fade-left">
+<p>➜ exécuté chez <strong>tous les visiteurs</strong> qui consultent la page.</p>
+</div>
+</section>
+<section id="xss-un-mur-de-commentaires" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">XSS : Un mur de commentaires</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="toto">
+<p>🔗 <code>shiny::runApp("security/apps/reprex11")</code></p>
+</div>
+<video src="assets/videos/reprex11-act1.webm" autoplay="" loop="" muted="" playsinline="" style="width:100%">
+</video>
+</div><div class="column" style="width:30%;">
+<div class="fragment fade-left">
+<p>Pierrot poste un message :</p>
+<p><code style="font-size: 0.85rem">Salut tout le monde !</code></p>
+</div>
+<div class="fragment fade-left">
+<p>Tout fonctionne ✅</p>
+</div>
+</div></div>
+</section>
+<section id="xss-un-attaquant-arrive" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">XSS : Un attaquant arrive</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="toto">
+<p>🔗 <code>shiny::runApp("security/apps/reprex11")</code></p>
+</div>
+<video src="assets/videos/reprex11-act2.webm" autoplay="" loop="" muted="" playsinline="" style="width:100%">
+</video>
+</div><div class="column" style="width:30%;">
+<div class="fragment fade-left">
+<p>Un autre poste :</p>
+<p><code style="font-size: 0.75rem">&lt;script&gt;alert(...)&lt;/script&gt;</code></p>
+</div>
+<div class="fragment fade-left">
+<p>💥 Alert chez tous les visiteurs.</p>
+</div>
+<div class="fragment fade-left">
+<p>Et <strong>à chaque rechargement</strong> : ça repart.</p>
+</div>
+</div></div>
+</section>
+<section id="xss-le-vrai-vol" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">XSS : Le vrai vol</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div class="toto">
+<p>🔗 <code>shiny::runApp("security/apps/reprex11")</code></p>
+</div>
+<video src="assets/videos/reprex11-act3.webm" autoplay="" loop="" muted="" playsinline="" style="width:100%">
+</video>
+</div><div class="column" style="width:30%;">
+<div class="fragment fade-left">
+<p>L’attaquant raffine :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource html number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode html hljs"><span id="cb11-1" class="hljs-ln-code"><a href=""></a><span class="dt">&lt;</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb11-2" class="hljs-ln-code"><a href=""></a>  <span class="op">...</span><span class="fu">createElement</span>(<span class="st">"button"</span>)<span class="op">...</span></span>
+<span id="cb11-3" class="hljs-ln-code"><a href=""></a>  fakeBtn<span class="op">.</span><span class="at">onclick</span> <span class="op">=</span> <span class="op">...</span></span>
+<span id="cb11-4" class="hljs-ln-code"><a href=""></a>  <span class="bu">document</span><span class="op">.</span><span class="at">body</span><span class="op">.</span><span class="fu">prepend</span>(fakeBtn)<span class="op">;</span></span>
+<span id="cb11-5" class="hljs-ln-code"><a href=""></a><span class="dt">&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="fragment fade-left">
+<p>💥 Faux bouton de <strong>connexion</strong> pour tous.</p>
+</div>
+<div class="fragment fade-left">
+<p>➜ Vol silencieux des credentials.</p>
+</div>
+</div></div>
+</section>
+<section id="bonne-pratique-5" class="slide level2">
+<h2>🥇 Bonne pratique #5</h2>
+<h3 id="échapper-le-contenu-utilisateur-avec-htmltoolshtmlescape">Échapper le contenu utilisateur avec <code>htmltools::htmlEscape()</code></h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>❌ Avant</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>glue<span class="sc">::</span><span class="fu">glue</span>(</span>
+<span id="cb12-2"><a href=""></a>  <span class="st">"&lt;p&gt;&lt;strong&gt;{row$pseudo}&lt;/strong&gt;"</span>,</span>
+<span id="cb12-3"><a href=""></a>  <span class="st">" : {row$message}&lt;/p&gt;"</span></span>
+<span id="cb12-4"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:50%;">
+<p><strong>✅ Après</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a>glue<span class="sc">::</span><span class="fu">glue</span>(</span>
+<span id="cb13-2"><a href=""></a>  <span class="st">"&lt;p&gt;&lt;strong&gt;{htmlEscape(row$pseudo)}&lt;/strong&gt;"</span>,</span>
+<span id="cb13-3"><a href=""></a>  <span class="st">" : {htmlEscape(row$message)}&lt;/p&gt;"</span></span>
+<span id="cb13-4"><a href=""></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></div>
+<div class="fragment fade-left">
+<p><em>Le <code>&lt;script&gt;</code> devient du texte affiché, pas exécuté.</em></p>
+</div>
+<div class="fragment fade-left">
+<p>À appliquer sur <strong>tout</strong> contenu utilisateur : pseudo <em>et</em> message.</p>
+</div>
+</section></section>
+<section>
+<section id="la-cuisine-sécurisée-de-pierrot" class="title-slide slide level1 center">
+<h1>La cuisine sécurisée de Pierrot</h1>
+
+</section>
+<section id="la-cuisine-sécurisée-de-pierrot-1" class="slide level2">
+<h2>La cuisine sécurisée de Pierrot</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+    <lottie-player src="https://lottie.host/5f2ed099-4737-471d-a199-96b7786d7c88/JhebxcrsLV.json" background="transparent" speed="01" style="width:500px; height:500px;" loop="" autoplay=""></lottie-player>
+  
+</div><div class="column" style="width:55%;">
+<h3 id="les-3-portes-à-fermer">Les 3 portes à fermer</h3>
+<div class="fragment fade-left">
+<p>🐛 <strong>Command Injection</strong> : jamais évaluer un input</p>
+</div>
+<div class="fragment fade-left">
+<p>🐛 <strong>SQL Injection</strong> : <code>sqlInterpolate()</code> ou <code>glue_sql()</code>, toujours</p>
+</div>
+<div class="fragment fade-left">
+<p>🐛 <strong>XSS</strong> : <code>htmlEscape()</code> tout ce qui s’affiche</p>
+</div>
+<div class="fragment fade-left">
+<p><br>
+</p>
+<p>🔐 <strong>Et la règle n°1</strong> : ne jamais faire confiance à l’utilisateur</p>
+</div>
+</div></div>
+</section>
+<section id="et-tout-ce-quon-na-pas-eu-le-temps-de-voir" class="slide level2">
+<h2>Et tout ce qu’on n’a pas eu le temps de voir</h2>
+<div class="fragment fade-left">
+<p>🔑 <strong>L’authentification</strong> : <code>shinymanager</code>, Posit Connect, OAuth… <em>C’est un autre sujet, mais essentiel.</em></p>
+</div>
+<div class="fragment fade-left">
+<p><br>
+</p>
+<p>📦 <strong>Les dépendances à jour</strong> : pas de Dependabot natif en R.</p>
+<p>Mise à jour régulière, surveillance manuelle des annonces upstream des paquets critiques.</p>
+</div>
+</section>
+<section id="pour-aller-plus-loin" class="slide level2">
+<h2>Pour aller plus loin</h2>
+<h3 id="sentraîner">S’entraîner</h3>
+<p><a href="https://connect.thinkr.fr/hackthisshiny/" target="_blank">🔗 connect.thinkr.fr/hackthisshiny/</a></p>
+<h3 id="lectures">Lectures</h3>
+<p><a href="https://shiny.posit.co/r/articles/build/sql-injections/" target="_blank">🔗 shiny.posit.co/r/articles/build/sql-injections/</a></p>
+<p><a href="https://fr.vuejs.org/guide/best-practices/security" target="_blank">🔗 vuejs.org/guide/best-practices/security</a></p>
+</section>
+<section id="merci" class="slide level2">
+<h2>Merci</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+    <lottie-player src="https://lottie.host/5f2ed099-4737-471d-a199-96b7786d7c88/JhebxcrsLV.json" background="transparent" speed="01" style="width:500px; height:500px;" loop="" autoplay=""></lottie-player>
+  
+</div><div class="column" style="width:55%;">
+<h3 id="des-questions">Des questions ?</h3>
+<p><a href="https://arthurdata.github.io/rencontresR2026" target="_blank">🔗 arthurdata.github.io/rencontresR2026</a></p>
+<p><br>
+</p>
+<p><em>Pierrot vous remercie.</em></p>
+</div></div>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="_extensions/ThinkR-open/thinkridentity/logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><strong><i class="las la-book"></i> Pierrot s’est fait pirater</strong> | Retrouvez nous sur <a href="https://thinkr.fr" class="uri">https://thinkr.fr</a></p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="index_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="index_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="index_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="index_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="index_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":false,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true,"titleSelector":"h1","hideMissingTitles":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+            let selectedAnnoteEl;
+            const selectorForAnnotation = ( cell, annotation) => {
+              let cellAttr = 'data-code-cell="' + cell + '"';
+              let lineAttr = 'data-code-annotation="' +  annotation + '"';
+              const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+              return selector;
+            }
+            const selectCodeLines = (annoteEl) => {
+              const doc = window.document;
+              const targetCell = annoteEl.getAttribute("data-target-cell");
+              const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+              const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+              const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+              const lineIds = lines.map((line) => {
+                return targetCell + "-" + line;
+              })
+              let top = null;
+              let height = null;
+              let parent = null;
+              if (lineIds.length > 0) {
+                  //compute the position of the single el (top and bottom and make a div)
+                  const el = window.document.getElementById(lineIds[0]);
+                  top = el.offsetTop;
+                  height = el.offsetHeight;
+                  parent = el.parentElement.parentElement;
+                if (lineIds.length > 1) {
+                  const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+                  const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+                  height = bottom - top;
+                }
+                if (top !== null && height !== null && parent !== null) {
+                  // cook up a div (if necessary) and position it 
+                  let div = window.document.getElementById("code-annotation-line-highlight");
+                  if (div === null) {
+                    div = window.document.createElement("div");
+                    div.setAttribute("id", "code-annotation-line-highlight");
+                    div.style.position = 'absolute';
+                    parent.appendChild(div);
+                  }
+                  div.style.top = top - 2 + "px";
+                  div.style.height = height + 4 + "px";
+                  div.style.left = 0;
+                  let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+                  if (gutterDiv === null) {
+                    gutterDiv = window.document.createElement("div");
+                    gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                    gutterDiv.style.position = 'absolute';
+                    const codeCell = window.document.getElementById(targetCell);
+                    const gutter = codeCell.querySelector('.code-annotation-gutter');
+                    gutter.appendChild(gutterDiv);
+                  }
+                  gutterDiv.style.top = top - 2 + "px";
+                  gutterDiv.style.height = height + 4 + "px";
+                }
+                selectedAnnoteEl = annoteEl;
+              }
+            };
+            const unselectCodeLines = () => {
+              const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+              elementsIds.forEach((elId) => {
+                const div = window.document.getElementById(elId);
+                if (div) {
+                  div.remove();
+                }
+              });
+              selectedAnnoteEl = undefined;
+            };
+              // Handle positioning of the toggle
+          window.addEventListener(
+            "resize",
+            throttle(() => {
+              elRect = undefined;
+              if (selectedAnnoteEl) {
+                selectCodeLines(selectedAnnoteEl);
+              }
+            }, 10)
+          );
+          function throttle(fn, ms) {
+          let throttle = false;
+          let timer;
+            return (...args) => {
+              if(!throttle) { // first call gets through
+                  fn.apply(this, args);
+                  throttle = true;
+              } else { // all the others get throttled
+                  if(timer) clearTimeout(timer); // cancel #2
+                  timer = setTimeout(() => {
+                    fn.apply(this, args);
+                    timer = throttle = false;
+                  }, ms);
+              }
+            };
+          }
+            const annoteTargets = window.document.querySelectorAll('.code-annotation-anchor');
+            for (let i=0; i<annoteTargets.length; i++) {
+              const annoteTarget = annoteTargets[i];
+              const targetCell = annoteTarget.getAttribute("data-target-cell");
+              const targetAnnotation = annoteTarget.getAttribute("data-target-annotation");
+              const contentFn = () => {
+                const content = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+                if (content) {
+                  const tipContent = content.cloneNode(true);
+                  tipContent.classList.add("code-annotation-tip-content");
+                  return tipContent.outerHTML;
+                }
+              }
+              const config = {
+                allowHTML: true,
+                content: contentFn,
+                onShow: (instance) => {
+                  selectCodeLines(instance.reference);
+                  instance.reference.classList.add('code-annotation-active');
+                  window.tippy.hideAll();
+                },
+                onHide: (instance) => {
+                  unselectCodeLines();
+                  instance.reference.classList.remove('code-annotation-active');
+                },
+                maxWidth: 300,
+                delay: [50, 0],
+                duration: [200, 0],
+                offset: [5, 10],
+                arrow: true,
+                appendTo: function(el) {
+                  return el.parentElement.parentElement.parentElement;
+                },
+                interactive: true,
+                interactiveBorder: 10,
+                theme: 'light-border',
+                placement: 'right',
+                popperOptions: {
+                  modifiers: [
+                  {
+                    name: 'flip',
+                    options: {
+                      flipVariations: false, // true by default
+                      allowedAutoPlacements: ['right'],
+                      fallbackPlacements: ['right', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end', 'left'],
+                    },
+                  },
+                  {
+                    name: 'preventOverflow',
+                    options: {
+                      mainAxis: false,
+                      altAxis: false
+                    }
+                  }
+                  ]        
+                }      
+              };
+              window.tippy(annoteTarget, config); 
+            }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
