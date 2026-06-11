@@ -8,9 +8,12 @@ format:
 chalkboard: false
 author: <a href="https://arthurdata.github.io/rencontresR2026" target="_blank">🔗 arthurdata.github.io/rencontresR2026</a>
 include-before-body: assets/ground.html
+include-after-body: assets/reset-videos.html
 date: last-modified
 resources:
   - assets/videos/*.webm
+  - assets/ground.html
+  - assets/reset-videos.html
 ---
 
 # Bonjour
@@ -197,9 +200,9 @@ Au même titre que :
 :::
 
 ::: {.column width="30%"}
-::: {.fragment .fade-left}
+
 Inputs ≈ **strings**.
-:::
+
 
 ::: {.fragment .fade-left}
 On tape :
