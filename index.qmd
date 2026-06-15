@@ -321,7 +321,8 @@ L'input reste une **string**, jamais évaluée comme du code.
 :::
 ::::
 
-## La feature évolue... {auto-animate=true}
+
+## La feature évolue...
 
 :::: {.columns}
 ::: {.column width="70%"}
@@ -332,41 +333,14 @@ L'input reste une **string**, jamais évaluée comme du code.
 :::
 
 ::: {.column width="30%"}
+
 `glue(input$xyz)`{style="font-size: 0.88rem"}
 
-::: {.fragment .fade-left data-id="reprex4-intro"}
-
+::: {.fragment .fade-left}
 L'input est traité comme **du code à interpréter**, plus comme du contenu.
 :::
 
 ::: {.fragment .fade-left}
-On tape :
-
-`Hello 1+1`{style="font-size: 0.88rem"}
-
-✅ Pas d'évaluation = *safe*.
-:::
-:::
-::::
-
-## La feature évolue... {auto-animate=true}
-
-:::: {.columns}
-::: {.column width="70%"}
-::: {.toto}
-🔗 `shiny::runApp("security/apps/reprex4")`
-:::
-<video data-id="reprex4-video" src="assets/videos/reprex4.webm" autoplay loop muted playsinline style="width:100%"></video>
-:::
-
-::: {.column width="30%"}
-::: {data-id="reprex4-intro"}
-`glue(input$xyz)`{style="font-size: 0.88rem"}
-
-L'input est traité comme **du code à interpréter**, plus comme du contenu.
-:::
-
-::: {.fade-left}
 On rajoute les accolades :
 
 `Hello {1+1}`{style="font-size: 0.88rem"}
