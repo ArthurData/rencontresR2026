@@ -861,6 +861,8 @@ Mise à jour régulière, surveillance manuelle des annonces upstream des paquet
 
 <a href="https://shiny.posit.co/r/articles/build/sql-injections/" target="_blank">🔗 shiny.posit.co/r/articles/build/sql-injections/</a>
 
+<a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html" target="_blank">🔗 OWASP — XSS Prevention Cheat Sheet</a>
+
 <a href="https://fr.vuejs.org/guide/best-practices/security" target="_blank">🔗 vuejs.org/guide/best-practices/security</a>
 
 ## Merci
