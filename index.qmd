@@ -1,24 +1,322 @@
 ---
-title: "Pierrot s'est fait pirater"
-subtitle: "Sécuriser ses applications Shiny"
+title: <span data-i18n-key="title"></span>
+subtitle: <span data-i18n-key="subtitle"></span>
 format:
   thinkridentity-revealjs:
+    footer: |
+      {{< i18n-select choices="fr:Français, en:English" selected="fr" >}}
     theme: custom.scss
     slideNumber: false
+    i18n:
+      defaultLocale: "fr"
+      fr:
+        title: "Pierrot s'est fait pirater"
+        subtitle: "Sécuriser ses applications Shiny"
+        section_hello: "Bonjour"
+        section_command_injection: "Command Injection"
+        section_sql_injection: "SQL Injection"
+        section_xss: "XSS"
+        section_secured_kitchen: "La cuisine sécurisée de Pierrot"
+        years_ago_3_title: "Il y a 3 ans..."
+        years_ago_3_text: 'Aux <a href="https://arthurdata.github.io/rencontresR2023/#/title-slide" target="_blank">🔗 Rencontres R 2023</a>, Pierrot <strong>maquettait</strong> son application Shiny.'
+        kitchen_being_drawn: "<em>La cuisine se dessine.</em>"
+        years_ago_1_title: "Il y a 1 an..."
+        years_ago_1_text: 'Aux <a href="https://arthurdata.github.io/rencontresR2025" target="_blank">🔗 Rencontres R 2025</a>, Pierrot <strong>testait</strong> son application Shiny.'
+        kitchen_solid: "<em>La cuisine est solide : tiroirs testés, modules emboîtés, repas cuisiné.</em>"
+        pierrot_2026_title: "Pierrot 2026"
+        pierrot_proud: "Pierrot est fier"
+        app_mockuped: "Son application est <strong>maquettée</strong>."
+        app_tested: "Elle est <strong>testée</strong>."
+        app_in_production: "Elle est <strong>en production</strong> chez son client."
+        all_good: "<em>Tout va bien.</em>"
+        until_this_morning: "... jusqu'à ce matin"
+        the_phone_call: "Le coup de fil"
+        phone_call_quote: "📞 <em>« Pierrot, on a un gros problème avec l'app... »</em>"
+        you_have_been_hacked: "> Vous avez été piratés."
+        kitchen_burgled_title: "La cuisine cambriolée"
+        pierrots_beautiful_kitchen: "La belle cuisine de Pierrot..."
+        door_forced: "La porte forcée"
+        drawers_emptied: "Les tiroirs vidés"
+        safe_opened: "Le coffre-fort ouvert"
+        pierrots_fears_title: "Les craintes de Pierrot..."
+        what_he_planned: "Ce qu'il avait prévu"
+        badly_built: "✅ Mal montée"
+        not_robust: "✅ Pas robuste"
+        badly_tested: "✅ Mal testée"
+        what_he_forgot: "Ce qu'il avait oublié"
+        burgled: "❓ Cambriolée"
+        pierrot_didnt_think: "Pierrot n'avait pas pensé à..."
+        to_security: "... la sécurité 🔐"
+        security_part_of_job: "La sécurité fait partie du métier"
+        same_as: "Au même titre que :"
+        the_tests: "✅ Les <strong>tests</strong>"
+        the_documentation: "✅ La <strong>documentation</strong>"
+        not_only_experts: "<em>Pas réservée aux experts en cybersécurité. C'est notre métier de dev.</em>"
+        good_news_shiny: "Bonne nouvelle : Shiny est bien foutu"
+        inputs_strings: "Inputs ≈ <strong>strings</strong>."
+        we_type: "On tape :"
+        no_eval_safe: "✅ Pas d'évaluation = <em>safe</em>."
+        bad_news_title: "Mauvaise nouvelle"
+        only_diff_html: "Une seule diff : <code>HTML(input$message)</code> au lieu de <code>input$message</code>."
+        script_executes: "💥 le script s'exécute."
+        xss_flaw: "🐛 Faille <strong>XSS</strong>"
+        code_injection_title: "L'injection de code"
+        code_injection_principle: "<strong>Le principe</strong> : injecter du code malveillant qui sera ensuite exécuté par l'application."
+        three_big_families: "3 grandes familles"
+        family_xss: "🐛 <strong>XSS (Cross-Site Scripting)</strong> : côté navigateur (client)"
+        family_command: "🐛 <strong>Command Injection</strong> : côté serveur"
+        family_sql: "🐛 <strong>SQL Injection</strong> : côté base de données"
+        common_point: "<em>Le point commun : exploiter l'absence de validation des données utilisateur.</em>"
+        cmd_inj_subtitle: "Du code R exécuté côté serveur"
+        user_input_ui: "Une <strong>saisie utilisateur</strong> depuis l'interface..."
+        evaluated_by_app: "...<strong>Évaluée</strong> par l'application..."
+        anyone_can_run_r: "➜ N'importe qui peut exécuter du code R sur <strong>votre</strong> serveur."
+        file_read_etc: "<em>Lecture de fichiers, accès au système, exfiltration de secrets</em>"
+        cmd_inj_reprex_safe: "Command Injection — Reprex safe"
+        input_stays_string: "L'input reste une <strong>string</strong>, jamais évaluée comme du code."
+        feature_evolves: "La feature évolue..."
+        input_as_code: "L'input est traité comme <strong>du code à interpréter</strong>, plus comme du contenu."
+        we_add_braces: "On rajoute les accolades :"
+        input_evaluated_code: "💥 L'input est <strong>évalué comme du code</strong>."
+        offensive_demo: "Démo offensive"
+        oops: "...oups 🙊"
+        why_sneaky: "Pourquoi c'est sournois"
+        glue_equiv: "<code>glue(input$template)</code> ≈ <code>eval(parse(text = input$template))</code>"
+        glue_more_discrete: "Mais <code>glue()</code> est <strong>plus discret</strong> car il évalue automatiquement ce qu'il y a entre <code>{}</code>."
+        best_practice_1: "🥇 Bonne pratique #1"
+        freeze_template: "Figer le template :"
+        select_input_excuse: '"Mais j''ai un <code>selectInput</code> !"'
+        select_input_3_choices_ui: "<code>selectInput</code> → 3 choix uniquement... côté UI."
+        browser_console: "Console navigateur :"
+        select_input_bypassed: "💥 <code>selectInput</code> contourné."
+        best_practice_2: "🥇 Bonne pratique #2"
+        validate_server_side: "Valider côté <strong>serveur</strong>"
+        or_switch_if: "Ou via <code>switch()</code> / <code>if</code> selon le besoin."
+        any_data_validated: "<em>Toute donnée venant du client doit être validée serveur-side. Toujours.</em>"
+        insecure_deserialization: "Insecure Deserialization"
+        attacker_rds: "Un <code>.rds</code> généré par l'attaquant :"
+        code_runs_on_use: "Du code <strong>s'exécute à l'utilisation</strong> de l'objet, pas à <code>readRDS()</code>."
+        attacker_code_executed: "💥 Code attaquant exécuté côté serveur."
+        best_practice_3: "🥇 Bonne pratique #3"
+        prefer_simple_formats: "Privilégier des formats <em>simples</em>"
+        csv_txt_json: "✅ <code>.csv</code>, <code>.txt</code>, <code>.json</code> — du <strong>contenu</strong>, pas du code sérialisé."
+        if_really_rds_sandbox_1: "🛡️ Si vraiment besoin d'un <code>.rds</code> : <strong>sandbox</strong>."
+        if_really_rds_sandbox_2: "(<code>callr</code>, <code>processx</code> en environnement restreint, container...)"
+        rule_one: "Règle n°1"
+        never_trust_user_input: "<em>Ne fais jamais confiance à l'entrée utilisateur, quel que soit le contexte.</em>"
+        sql_inj_title: "SQL Injection"
+        type_1_robert: "Tape <code>1</code> ➜ Robert ✅"
+        type_or_1_1: "Tape <code>1 OR 1=1</code> ➜ <strong>toute la table</strong> 💥"
+        offensive_demos: "Démos offensives"
+        leak_all_rows: "<strong>Fuite</strong> : on récupère <strong>toutes</strong> les lignes de la table."
+        destruction_table: "<strong>Destruction</strong> : selon le driver, la table disparaît."
+        select_input_excuse_bis: '"Mais j''ai un <code>selectInput</code> !" (bis)'
+        select_input_5_ids: "<code>selectInput</code> → 5 IDs uniquement... côté UI."
+        same_leak_despite: "💥 Même fuite, malgré le <code>selectInput</code>."
+        best_practice_4: "🥇 Bonne pratique #4"
+        before_label: "❌ Avant"
+        with_sql_interpolate: "✅ Avec <code>sqlInterpolate</code>"
+        same_attack_empty: "<em>Même attaque <code>1 OR 1=1</code> ➜ requête vide, table intacte.</em>"
+        or_with_glue_sql: "✅ Ou avec <code>glue_sql</code>"
+        xss_full: "XSS : Cross-Site Scripting"
+        js_executed_browser: "Du code JS exécuté <strong>côté navigateur</strong>"
+        attacker_injects: "L'attaquant injecte du code dans une page..."
+        stored_or_reflected: "...stocké côté serveur ou simplement reflété..."
+        executed_all_visitors: "➜ exécuté chez <strong>tous les visiteurs</strong> qui consultent la page."
+        wall_of_comments: "XSS : Un mur de commentaires"
+        pierrot_posts: "Pierrot poste un message :"
+        everything_works: "Tout fonctionne ✅"
+        attacker_arrives_title: "XSS : Un attaquant arrive"
+        another_posts: "Un autre poste :"
+        alert_all_visitors: "💥 Alert chez tous les visiteurs."
+        each_reload: "Et <strong>à chaque rechargement</strong> : ça repart."
+        real_theft: "XSS : Le vrai vol"
+        attacker_refines: "L'attaquant raffine :"
+        fake_login_button: "💥 Faux bouton de <strong>connexion</strong> pour tous."
+        silent_credentials_theft: "➜ Vol silencieux des credentials."
+        best_practice_5: "🥇 Bonne pratique #5"
+        escape_user_content: "Échapper le contenu utilisateur avec <code>htmltools::htmlEscape()</code>"
+        after_label: "✅ Après"
+        script_becomes_text: "<em>Le <code>&lt;script&gt;</code> devient du texte affiché, pas exécuté.</em>"
+        apply_all_user_content: "À appliquer sur <strong>tout</strong> contenu utilisateur : pseudo <em>et</em> message."
+        three_doors_close: "Les 3 portes à fermer"
+        cmd_inj_summary: "🐛 <strong>Command Injection</strong> : jamais évaluer un input"
+        sql_inj_summary: "🐛 <strong>SQL Injection</strong> : <code>sqlInterpolate()</code> ou <code>glue_sql()</code>, toujours"
+        xss_summary: "🐛 <strong>XSS</strong> : <code>htmlEscape()</code> tout ce qui s'affiche"
+        rule_one_recap: "🔐 <strong>Et la règle n°1</strong> : ne jamais faire confiance à l'utilisateur"
+        not_had_time: "Et tout ce qu'on n'a pas eu le temps de voir"
+        authentication: "🔑 <strong>L'authentification</strong> : <code>shinymanager</code>, Posit Connect, OAuth..."
+        auth_other_subject: "<em>C'est un autre sujet, mais essentiel.</em>"
+        dependencies_up_to_date: "📦 <strong>Les dépendances à jour</strong> : pas de Dependabot natif en R."
+        regular_update: "Mise à jour régulière, surveillance manuelle des annonces upstream des paquets critiques."
+        going_further: "Pour aller plus loin"
+        training: "S'entraîner"
+        readings: "Lectures"
+        thank_you: "Merci"
+        any_questions: "Des questions ?"
+        pierrot_thanks_you: "<em>Pierrot vous remercie.</em>"
+      en:
+        title: "Pierrot got hacked"
+        subtitle: "Securing your Shiny apps"
+        section_hello: "Hello"
+        section_command_injection: "Command Injection"
+        section_sql_injection: "SQL Injection"
+        section_xss: "XSS"
+        section_secured_kitchen: "Pierrot's secured kitchen"
+        years_ago_3_title: "3 years ago..."
+        years_ago_3_text: 'At <a href="https://arthurdata.github.io/rencontresR2023/#/title-slide" target="_blank">🔗 Rencontres R 2023</a>, Pierrot was <strong>sketching</strong> his Shiny app.'
+        kitchen_being_drawn: "<em>The kitchen is taking shape.</em>"
+        years_ago_1_title: "1 year ago..."
+        years_ago_1_text: 'At <a href="https://arthurdata.github.io/rencontresR2025" target="_blank">🔗 Rencontres R 2025</a>, Pierrot was <strong>testing</strong> his Shiny app.'
+        kitchen_solid: "<em>The kitchen is solid: drawers tested, modules slotted in, meal cooked.</em>"
+        pierrot_2026_title: "Pierrot 2026"
+        pierrot_proud: "Pierrot is proud"
+        app_mockuped: "His app is <strong>sketched</strong>."
+        app_tested: "It is <strong>tested</strong>."
+        app_in_production: "It is <strong>in production</strong> at his client's."
+        all_good: "<em>All good.</em>"
+        until_this_morning: "... until this morning"
+        the_phone_call: "The phone call"
+        phone_call_quote: "📞 <em>« Pierrot, we have a big problem with the app... »</em>"
+        you_have_been_hacked: "> You have been hacked."
+        kitchen_burgled_title: "The burgled kitchen"
+        pierrots_beautiful_kitchen: "Pierrot's beautiful kitchen..."
+        door_forced: "The door forced open"
+        drawers_emptied: "The drawers emptied"
+        safe_opened: "The safe opened"
+        pierrots_fears_title: "Pierrot's fears..."
+        what_he_planned: "What he had planned for"
+        badly_built: "✅ Badly built"
+        not_robust: "✅ Not robust"
+        badly_tested: "✅ Badly tested"
+        what_he_forgot: "What he had forgotten"
+        burgled: "❓ Burgled"
+        pierrot_didnt_think: "Pierrot hadn't thought of..."
+        to_security: "... security 🔐"
+        security_part_of_job: "Security is part of the job"
+        same_as: "Just like:"
+        the_tests: "✅ <strong>Tests</strong>"
+        the_documentation: "✅ <strong>Documentation</strong>"
+        not_only_experts: "<em>Not reserved for cybersecurity experts. It's our job as developers.</em>"
+        good_news_shiny: "Good news: Shiny is well designed"
+        inputs_strings: "Inputs ≈ <strong>strings</strong>."
+        we_type: "We type:"
+        no_eval_safe: "✅ No evaluation = <em>safe</em>."
+        bad_news_title: "Bad news"
+        only_diff_html: "One single diff: <code>HTML(input$message)</code> instead of <code>input$message</code>."
+        script_executes: "💥 the script executes."
+        xss_flaw: "🐛 <strong>XSS</strong> vulnerability"
+        code_injection_title: "Code injection"
+        code_injection_principle: "<strong>The principle</strong>: inject malicious code that will then be executed by the application."
+        three_big_families: "3 main families"
+        family_xss: "🐛 <strong>XSS (Cross-Site Scripting)</strong>: browser-side (client)"
+        family_command: "🐛 <strong>Command Injection</strong>: server-side"
+        family_sql: "🐛 <strong>SQL Injection</strong>: database-side"
+        common_point: "<em>Common thread: exploiting the lack of user input validation.</em>"
+        cmd_inj_subtitle: "R code executed on the server"
+        user_input_ui: "A <strong>user input</strong> from the interface..."
+        evaluated_by_app: "...<strong>evaluated</strong> by the application..."
+        anyone_can_run_r: "➜ Anyone can run R code on <strong>your</strong> server."
+        file_read_etc: "<em>File reads, system access, secrets exfiltration</em>"
+        cmd_inj_reprex_safe: "Command Injection — Safe reprex"
+        input_stays_string: "The input stays a <strong>string</strong>, never evaluated as code."
+        feature_evolves: "The feature evolves..."
+        input_as_code: "The input is treated as <strong>code to interpret</strong>, no longer as content."
+        we_add_braces: "We add the braces:"
+        input_evaluated_code: "💥 The input is <strong>evaluated as code</strong>."
+        offensive_demo: "Offensive demo"
+        oops: "...oops 🙊"
+        why_sneaky: "Why it's sneaky"
+        glue_equiv: "<code>glue(input$template)</code> ≈ <code>eval(parse(text = input$template))</code>"
+        glue_more_discrete: "But <code>glue()</code> is <strong>more discreet</strong> because it automatically evaluates what's between <code>{}</code>."
+        best_practice_1: "🥇 Best practice #1"
+        freeze_template: "Freeze the template:"
+        select_input_excuse: '"But I have a <code>selectInput</code>!"'
+        select_input_3_choices_ui: "<code>selectInput</code> → only 3 choices... on the UI side."
+        browser_console: "Browser console:"
+        select_input_bypassed: "💥 <code>selectInput</code> bypassed."
+        best_practice_2: "🥇 Best practice #2"
+        validate_server_side: "Validate on the <strong>server</strong> side"
+        or_switch_if: "Or via <code>switch()</code> / <code>if</code> depending on the need."
+        any_data_validated: "<em>Any data coming from the client must be validated server-side. Always.</em>"
+        insecure_deserialization: "Insecure Deserialization"
+        attacker_rds: "An <code>.rds</code> generated by the attacker:"
+        code_runs_on_use: "Code <strong>runs when the object is used</strong>, not on <code>readRDS()</code>."
+        attacker_code_executed: "💥 Attacker code executed on the server."
+        best_practice_3: "🥇 Best practice #3"
+        prefer_simple_formats: "Prefer <em>simple</em> formats"
+        csv_txt_json: "✅ <code>.csv</code>, <code>.txt</code>, <code>.json</code> — <strong>content</strong>, not serialized code."
+        if_really_rds_sandbox_1: "🛡️ If you really need an <code>.rds</code>: <strong>sandbox</strong> it."
+        if_really_rds_sandbox_2: "(<code>callr</code>, <code>processx</code> in a restricted environment, container...)"
+        rule_one: "Rule #1"
+        never_trust_user_input: "<em>Never trust user input, whatever the context.</em>"
+        sql_inj_title: "SQL Injection"
+        type_1_robert: "Type <code>1</code> ➜ Robert ✅"
+        type_or_1_1: "Type <code>1 OR 1=1</code> ➜ <strong>the whole table</strong> 💥"
+        offensive_demos: "Offensive demos"
+        leak_all_rows: "<strong>Leak</strong>: we recover <strong>all</strong> the rows of the table."
+        destruction_table: "<strong>Destruction</strong>: depending on the driver, the table disappears."
+        select_input_excuse_bis: '"But I have a <code>selectInput</code>!" (bis)'
+        select_input_5_ids: "<code>selectInput</code> → only 5 IDs... on the UI side."
+        same_leak_despite: "💥 Same leak, despite the <code>selectInput</code>."
+        best_practice_4: "🥇 Best practice #4"
+        before_label: "❌ Before"
+        with_sql_interpolate: "✅ With <code>sqlInterpolate</code>"
+        same_attack_empty: "<em>Same attack <code>1 OR 1=1</code> ➜ empty query, table intact.</em>"
+        or_with_glue_sql: "✅ Or with <code>glue_sql</code>"
+        xss_full: "XSS: Cross-Site Scripting"
+        js_executed_browser: "JS code executed <strong>in the browser</strong>"
+        attacker_injects: "The attacker injects code into a page..."
+        stored_or_reflected: "...stored server-side or simply reflected..."
+        executed_all_visitors: "➜ executed on <strong>every visitor</strong> who views the page."
+        wall_of_comments: "XSS: A wall of comments"
+        pierrot_posts: "Pierrot posts a message:"
+        everything_works: "Everything works ✅"
+        attacker_arrives_title: "XSS: An attacker arrives"
+        another_posts: "Someone else posts:"
+        alert_all_visitors: "💥 Alert on every visitor."
+        each_reload: "And <strong>on every reload</strong>: it starts again."
+        real_theft: "XSS: The real theft"
+        attacker_refines: "The attacker refines:"
+        fake_login_button: "💥 Fake <strong>login</strong> button for everyone."
+        silent_credentials_theft: "➜ Silent theft of credentials."
+        best_practice_5: "🥇 Best practice #5"
+        escape_user_content: "Escape user content with <code>htmltools::htmlEscape()</code>"
+        after_label: "✅ After"
+        script_becomes_text: "<em>The <code>&lt;script&gt;</code> becomes displayed text, not executed.</em>"
+        apply_all_user_content: "Apply to <strong>all</strong> user content: username <em>and</em> message."
+        three_doors_close: "The 3 doors to close"
+        cmd_inj_summary: "🐛 <strong>Command Injection</strong>: never evaluate an input"
+        sql_inj_summary: "🐛 <strong>SQL Injection</strong>: <code>sqlInterpolate()</code> or <code>glue_sql()</code>, always"
+        xss_summary: "🐛 <strong>XSS</strong>: <code>htmlEscape()</code> everything that's displayed"
+        rule_one_recap: "🔐 <strong>And rule #1</strong>: never trust the user"
+        not_had_time: "And everything we didn't have time to cover"
+        authentication: "🔑 <strong>Authentication</strong>: <code>shinymanager</code>, Posit Connect, OAuth..."
+        auth_other_subject: "<em>Another subject, but essential.</em>"
+        dependencies_up_to_date: "📦 <strong>Dependencies up to date</strong>: no native Dependabot in R."
+        regular_update: "Regular updates, manual monitoring of upstream announcements for critical packages."
+        going_further: "Going further"
+        training: "Train yourself"
+        readings: "Readings"
+        thank_you: "Thank you"
+        any_questions: "Any questions?"
+        pierrot_thanks_you: "<em>Pierrot thanks you.</em>"
 chalkboard: false
 author: <a href="https://arthurdata.github.io/rencontresR2026" target="_blank">🔗 arthurdata.github.io/rencontresR2026</a>
 include-before-body: assets/ground.html
 include-after-body: assets/reset-videos.html
 date: 2026-06-16
+revealjs-plugins:
+  - i18n
 resources:
   - assets/videos/*.webm
   - assets/ground.html
   - assets/reset-videos.html
 ---
 
-# Bonjour
+# <span data-i18n-key="section_hello"></span>
 
-## Il y a 3 ans... {auto-animate=true}
+## <span data-i18n-key="years_ago_3_title"></span> {auto-animate=true}
 
 :::: {.columns}
 ::: {.column width="45%"}
@@ -29,16 +327,16 @@ resources:
 
 ::: {.column width="55%"}
 ::: {.fragment .fade-left}
-Aux <a href="https://arthurdata.github.io/rencontresR2023/#/title-slide" target="_blank">🔗 Rencontres R 2023</a>, Pierrot **maquettait** son application Shiny.
+<span data-i18n-key="years_ago_3_text"></span>
 :::
 
 ::: {.fragment .fade-left}
-*La cuisine se dessine.*
+<span data-i18n-key="kitchen_being_drawn"></span>
 :::
 :::
 ::::
 
-## Il y a 1 an... {auto-animate=true}
+## <span data-i18n-key="years_ago_1_title"></span> {auto-animate=true}
 
 :::: {.columns}
 ::: {.column width="45%"}
@@ -49,16 +347,16 @@ Aux <a href="https://arthurdata.github.io/rencontresR2023/#/title-slide" target=
 
 ::: {.column width="55%"}
 ::: {.fragment .fade-left}
-Aux <a href="https://arthurdata.github.io/rencontresR2025" target="_blank">🔗 Rencontres R 2025</a>, Pierrot **testait** son application Shiny.
+<span data-i18n-key="years_ago_1_text"></span>
 :::
 
 ::: {.fragment .fade-left}
-*La cuisine est solide : tiroirs testés, modules emboîtés, repas cuisiné.*
+<span data-i18n-key="kitchen_solid"></span>
 :::
 :::
 ::::
 
-## Pierrot 2026 {auto-animate=true}
+## <span data-i18n-key="pierrot_2026_title"></span> {auto-animate=true}
 
 :::: {.columns}
 ::: {.column width="45%"}
@@ -68,27 +366,27 @@ Aux <a href="https://arthurdata.github.io/rencontresR2025" target="_blank">🔗 
 :::
 
 ::: {.column width="55%"}
-### Pierrot est fier
+### <span data-i18n-key="pierrot_proud"></span>
 
 ::: {.fragment .fade-left}
-Son application est **maquettée**.
+<span data-i18n-key="app_mockuped"></span>
 :::
 
 ::: {.fragment .fade-left}
-Elle est **testée**.
+<span data-i18n-key="app_tested"></span>
 :::
 
 ::: {.fragment .fade-left}
-Elle est **en production** chez son client.
+<span data-i18n-key="app_in_production"></span>
 :::
 
 ::: {.fragment .fade-left}
-*Tout va bien.*
+<span data-i18n-key="all_good"></span>
 :::
 :::
 ::::
 
-## ... jusqu'à ce matin {auto-animate=true}
+## <span data-i18n-key="until_this_morning"></span> {auto-animate=true}
 
 :::: {.columns}
 ::: {.column width="45%"}
@@ -99,9 +397,9 @@ Elle est **en production** chez son client.
 
 ::: {.column width="55%"}
 ::: {.fragment .fade-left}
-### Le coup de fil
+### <span data-i18n-key="the_phone_call"></span>
 
-> 📞 *"Pierrot, on a un gros problème avec l'app..."*
+> <span data-i18n-key="phone_call_quote"></span>
 :::
 
 :::
@@ -113,11 +411,11 @@ Elle est **en production** chez son client.
 
 ::: {.hacked-typewriter-wrap}
 ::: {.hacked-typewriter}
-\> Vous avez été piratés.
+<span data-i18n-key="you_have_been_hacked"></span>
 :::
 :::
 
-## La cuisine cambriolée
+## <span data-i18n-key="kitchen_burgled_title"></span>
 
 :::: {.columns}
 ::: {.column width="45%"}
@@ -125,71 +423,71 @@ Elle est **en production** chez son client.
 :::
 
 ::: {.column width="55%"}
-### La belle cuisine de Pierrot...
+### <span data-i18n-key="pierrots_beautiful_kitchen"></span>
 
 ::: {.fragment .fade-left}
-La porte forcée
+<span data-i18n-key="door_forced"></span>
 :::
 
 ::: {.fragment .fade-left}
-Les tiroirs vidés
+<span data-i18n-key="drawers_emptied"></span>
 :::
 
 ::: {.fragment .fade-left}
-Le coffre-fort ouvert
+<span data-i18n-key="safe_opened"></span>
 :::
 :::
 ::::
 
-## Les craintes de Pierrot...
+## <span data-i18n-key="pierrots_fears_title"></span>
 
 :::: {.columns}
 ::: {.column width="50%"}
-### Ce qu'il avait prévu
+### <span data-i18n-key="what_he_planned"></span>
 
 ::: {.fragment .fade-left}
-✅ Mal montée
+<span data-i18n-key="badly_built"></span>
 
-✅ Pas robuste
+<span data-i18n-key="not_robust"></span>
 
-✅ Mal testée
+<span data-i18n-key="badly_tested"></span>
 :::
 :::
 
 ::: {.column width="50%"}
-### Ce qu'il avait oublié
+### <span data-i18n-key="what_he_forgot"></span>
 
 ::: {.fragment .fade-left}
-❓ Cambriolée
+<span data-i18n-key="burgled"></span>
 :::
 :::
 ::::
 
-## Pierrot n'avait pas pensé à...
+## <span data-i18n-key="pierrot_didnt_think"></span>
 
 ::: {.fragment .fade-in}
-### ... la sécurité 🔐
+### <span data-i18n-key="to_security"></span>
 :::
 
-## La sécurité fait partie du métier
+## <span data-i18n-key="security_part_of_job"></span>
 
-Au même titre que :
+<span data-i18n-key="same_as"></span>
 
 ::: {.fragment .fade-left}
-✅ Les **tests**
+<span data-i18n-key="the_tests"></span>
 :::
 
 ::: {.fragment .fade-left}
-✅ La **documentation**
+<span data-i18n-key="the_documentation"></span>
 :::
 
 \
 
 ::: {.fragment .fade-in}
-*Pas réservée aux experts en cybersécurité. C'est notre métier de dev.*
+<span data-i18n-key="not_only_experts"></span>
 :::
 
-## Bonne nouvelle : Shiny est bien foutu
+## <span data-i18n-key="good_news_shiny"></span>
 
 :::: {.columns}
 ::: {.column width="70%"}
@@ -201,23 +499,23 @@ Au même titre que :
 
 ::: {.column width="30%"}
 
-Inputs ≈ **strings**.
+<span data-i18n-key="inputs_strings"></span>
 
 
 ::: {.fragment .fade-left}
-On tape :
+<span data-i18n-key="we_type"></span>
 
 `<script>alert()</script>`{style="font-size: 0.88rem"}
 :::
 
 ::: {.fragment .fade-left}
-✅ Pas d'évaluation = *safe*.
+<span data-i18n-key="no_eval_safe"></span>
 
 :::
 :::
 ::::
 
-## Mauvaise nouvelle
+## <span data-i18n-key="bad_news_title"></span>
 
 :::: {.columns}
 ::: {.column width="70%"}
@@ -229,72 +527,72 @@ On tape :
 
 ::: {.column width="30%"}
 ::: {.fragment .fade-left}
-Une seule diff : `HTML(input$message)` au lieu de `input$message`.
+<span data-i18n-key="only_diff_html"></span>
 :::
 
 ::: {.fragment .fade-left}
-On tape :
+<span data-i18n-key="we_type"></span>
 
 `<script>alert()</script>`{style="font-size: 0.88rem"}
 
-💥 le script s'exécute.
+<span data-i18n-key="script_executes"></span>
 :::
 
 ::: {.fragment .fade-left}
-🐛 Faille **XSS**
+<span data-i18n-key="xss_flaw"></span>
 :::
 :::
 ::::
 
-## L'injection de code
+## <span data-i18n-key="code_injection_title"></span>
 
-**Le principe** : injecter du code malveillant qui sera ensuite exécuté par l'application.
-
-\
-
-::: {.fragment .fade-in}
-### 3 grandes familles
-:::
-
-::: {.fragment .fade-left}
-🐛 **XSS (Cross-Site Scripting)** : côté navigateur (client)
-:::
-
-::: {.fragment .fade-left}
-🐛 **Command Injection** : côté serveur
-:::
-
-::: {.fragment .fade-left}
-🐛 **SQL Injection** : côté base de données
-:::
+<span data-i18n-key="code_injection_principle"></span>
 
 \
 
 ::: {.fragment .fade-in}
-*Le point commun : exploiter l'absence de validation des données utilisateur.*
-:::
-
-# Command Injection
-
-## Command Injection
-
-### Du code R exécuté côté serveur
-
-::: {.fragment .fade-left}
-Une **saisie utilisateur** depuis l'interface...
+### <span data-i18n-key="three_big_families"></span>
 :::
 
 ::: {.fragment .fade-left}
-...**Évaluée** par l'application...
+<span data-i18n-key="family_xss"></span>
 :::
 
 ::: {.fragment .fade-left}
-➜ N'importe qui peut exécuter du code R sur **votre** serveur.
-
-_Lecture de fichiers, accès au système, exfiltration de secrets_
+<span data-i18n-key="family_command"></span>
 :::
 
-## Command Injection — Reprex safe
+::: {.fragment .fade-left}
+<span data-i18n-key="family_sql"></span>
+:::
+
+\
+
+::: {.fragment .fade-in}
+<span data-i18n-key="common_point"></span>
+:::
+
+# <span data-i18n-key="section_command_injection"></span>
+
+## <span data-i18n-key="section_command_injection"></span>
+
+### <span data-i18n-key="cmd_inj_subtitle"></span>
+
+::: {.fragment .fade-left}
+<span data-i18n-key="user_input_ui"></span>
+:::
+
+::: {.fragment .fade-left}
+<span data-i18n-key="evaluated_by_app"></span>
+:::
+
+::: {.fragment .fade-left}
+<span data-i18n-key="anyone_can_run_r"></span>
+
+<span data-i18n-key="file_read_etc"></span>
+:::
+
+## <span data-i18n-key="cmd_inj_reprex_safe"></span>
 
 :::: {.columns}
 ::: {.column width="70%"}
@@ -308,21 +606,21 @@ _Lecture de fichiers, accès au système, exfiltration de secrets_
 `glue("Ton choix est : {input$xyz}")`{style="font-size: 0.88rem"}
 
 ::: {.fragment .fade-left}
-On tape :
+<span data-i18n-key="we_type"></span>
 
 `Hello {1+1}`{style="font-size: 0.88rem"}
 
-L'input reste une **string**, jamais évaluée comme du code.
+<span data-i18n-key="input_stays_string"></span>
 :::
 
 ::: {.fragment .fade-left}
-✅ Pas d'évaluation = *safe*.
+<span data-i18n-key="no_eval_safe"></span>
 :::
 :::
 ::::
 
 
-## La feature évolue...
+## <span data-i18n-key="feature_evolves"></span>
 
 :::: {.columns}
 ::: {.column width="70%"}
@@ -337,11 +635,11 @@ L'input reste une **string**, jamais évaluée comme du code.
 `glue(input$xyz)`{style="font-size: 0.88rem"}
 
 ::: {.fragment .fade-left}
-L'input est traité comme **du code à interpréter**, plus comme du contenu.
+<span data-i18n-key="input_as_code"></span>
 :::
 
 ::: {.fragment .fade-left}
-On rajoute les accolades :
+<span data-i18n-key="we_add_braces"></span>
 
 `Hello {1+1}`{style="font-size: 0.88rem"}
 
@@ -349,12 +647,12 @@ On rajoute les accolades :
 :::
 
 ::: {.fragment .fade-left}
-💥 L'input est **évalué comme du code**.
+<span data-i18n-key="input_evaluated_code"></span>
 :::
 :::
 ::::
 
-## Démo offensive
+## <span data-i18n-key="offensive_demo"></span>
 
 :::: {.columns}
 ::: {.column width="70%"}
@@ -373,35 +671,35 @@ On rajoute les accolades :
 {system("useradd hacker")}
 ```
 
-...oups 🙊
+<span data-i18n-key="oops"></span>
 :::
 ::::
 
-## Pourquoi c'est sournois
+## <span data-i18n-key="why_sneaky"></span>
 
 ::: {.fragment .fade-left}
-`glue(input$template)` ≈ `eval(parse(text = input$template))`
+<span data-i18n-key="glue_equiv"></span>
 :::
 
 ::: {.fragment .fade-left}
 \
 
-Mais `glue()` est **plus discret** car il évalue automatiquement ce qu'il y a entre `{}`.
+<span data-i18n-key="glue_more_discrete"></span>
 :::
 
 \
 
 ::: {.fragment .fade-in}
-### 🥇 Bonne pratique #1
+### <span data-i18n-key="best_practice_1"></span>
 
-Figer le template :
+<span data-i18n-key="freeze_template"></span>
 
 ```r
 glue("{input$template}")
 ```
 :::
 
-## "Mais j'ai un `selectInput` !"
+## <span data-i18n-key="select_input_excuse"></span>
 
 :::: {.columns}
 ::: {.column width="70%"}
@@ -413,22 +711,22 @@ glue("{input$template}")
 
 ::: {.column width="30%"}
 ::: {.fragment .fade-left}
-`selectInput` → 3 choix uniquement... côté UI.
+<span data-i18n-key="select_input_3_choices_ui"></span>
 :::
 
 ::: {.fragment .fade-left}
-Console navigateur :
+<span data-i18n-key="browser_console"></span>
 
 `Shiny.setInputValue("color", "{1+1}")`{style="font-size: 0.8rem"}
 
-💥 `selectInput` contourné.
+<span data-i18n-key="select_input_bypassed"></span>
 :::
 :::
 ::::
 
-## 🥇 Bonne pratique #2
+## <span data-i18n-key="best_practice_2"></span>
 
-### Valider côté **serveur**
+### <span data-i18n-key="validate_server_side"></span>
 
 ```r
 input_color <- match.arg(
@@ -438,16 +736,16 @@ input_color <- match.arg(
 ```
 
 ::: {.fragment .fade-left}
-Ou via `switch()` / `if` selon le besoin.
+<span data-i18n-key="or_switch_if"></span>
 :::
 
 ::: {.fragment .fade-in}
 \
 
-[*Toute donnée venant du client doit être validée serveur-side. Toujours.*]{.relevant}
+[<span data-i18n-key="any_data_validated"></span>]{.relevant}
 :::
 
-## Insecure Deserialization
+## <span data-i18n-key="insecure_deserialization"></span>
 
 :::: {.columns}
 ::: {.column width="70%"}
@@ -459,7 +757,7 @@ Ou via `switch()` / `if` selon le besoin.
 
 ::: {.column width="30%"}
 ::: {.fragment .fade-left}
-Un `.rds` généré par l'attaquant :
+<span data-i18n-key="attacker_rds"></span>
 
 ```r
 evil <- function() {
@@ -470,36 +768,36 @@ saveRDS(evil, "evil.rds")
 :::
 
 ::: {.fragment .fade-left}
-Du code **s'exécute à l'utilisation** de l'objet, pas à `readRDS()`.
+<span data-i18n-key="code_runs_on_use"></span>
 
-💥 Code attaquant exécuté côté serveur.
+<span data-i18n-key="attacker_code_executed"></span>
 :::
 :::
 ::::
 
-## 🥇 Bonne pratique #3
+## <span data-i18n-key="best_practice_3"></span>
 
-### Privilégier des formats *simples*
+### <span data-i18n-key="prefer_simple_formats"></span>
 
 ::: {.fragment .fade-left}
-✅ `.csv`, `.txt`, `.json` — du **contenu**, pas du code sérialisé.
+<span data-i18n-key="csv_txt_json"></span>
 :::
 
 ::: {.fragment .fade-left}
-🛡️ Si vraiment besoin d'un `.rds` : **sandbox**.
+<span data-i18n-key="if_really_rds_sandbox_1"></span>
 
-(`callr`, `processx` en environnement restreint, container...)
+<span data-i18n-key="if_really_rds_sandbox_2"></span>
 :::
 
 ## {.center background-color="#4169ed"}
 
-### Règle n°1
+### <span data-i18n-key="rule_one"></span>
 
-### [*Ne fais jamais confiance à l'entrée utilisateur, quel que soit le contexte.*]{.relevant}
+### [<span data-i18n-key="never_trust_user_input"></span>]{.relevant}
 
-# SQL Injection
+# <span data-i18n-key="section_sql_injection"></span>
 
-## SQL Injection
+## <span data-i18n-key="sql_inj_title"></span>
 
 :::: {.columns}
 ::: {.column width="70%"}
@@ -515,22 +813,22 @@ Du code **s'exécute à l'utilisation** de l'objet, pas à `readRDS()`.
 :::
 
 ::: {.fragment .fade-left}
-Tape `1` ➜ Robert ✅
+<span data-i18n-key="type_1_robert"></span>
 :::
 
 ::: {.fragment .fade-left}
-Tape `1 OR 1=1` ➜ **toute la table** 💥
+<span data-i18n-key="type_or_1_1"></span>
 :::
 :::
 ::::
 
-## Démos offensives
+## <span data-i18n-key="offensive_demos"></span>
 
 ```sql
 1 OR 1=1
 ```
 
-**Fuite** : on récupère **toutes** les lignes de la table.
+<span data-i18n-key="leak_all_rows"></span>
 
 
 \
@@ -540,10 +838,10 @@ Tape `1 OR 1=1` ➜ **toute la table** 💥
 1; DROP TABLE users
 ```
 
-**Destruction** : selon le driver, la table disparaît.
+<span data-i18n-key="destruction_table"></span>
 :::
 
-## "Mais j'ai un `selectInput` !" (bis)
+## <span data-i18n-key="select_input_excuse_bis"></span>
 
 :::: {.columns}
 ::: {.column width="70%"}
@@ -555,24 +853,24 @@ Tape `1 OR 1=1` ➜ **toute la table** 💥
 
 ::: {.column width="30%"}
 ::: {.fragment .fade-left}
-`selectInput` → 5 IDs uniquement... côté UI.
+<span data-i18n-key="select_input_5_ids"></span>
 :::
 
 ::: {.fragment .fade-left}
-Console navigateur :
+<span data-i18n-key="browser_console"></span>
 
 `Shiny.setInputValue("user_input", "1 OR 1=1")`{style="font-size: 0.88rem"}
 
-💥 Même fuite, malgré le `selectInput`.
+<span data-i18n-key="same_leak_despite"></span>
 :::
 :::
 ::::
 
-## 🥇 Bonne pratique #4 {auto-animate=true}
+## <span data-i18n-key="best_practice_4"></span> {auto-animate=true}
 
 :::: {.columns}
 ::: {.column width="50%"}
-**❌ Avant**
+**<span data-i18n-key="before_label"></span>**
 
 ```r
 rv$query <- paste0(
@@ -586,7 +884,7 @@ rv$result <- dbGetQuery(
 :::
 
 ::: {.column width="50%"}
-**✅ Avec `sqlInterpolate`**
+**<span data-i18n-key="with_sql_interpolate"></span>**
 
 ```r
 rv$query <- sqlInterpolate(
@@ -602,14 +900,14 @@ rv$result <- dbGetQuery(
 ::::
 
 ::: {.fragment .fade-left}
-*Même attaque `1 OR 1=1` ➜ requête vide, table intacte.*
+<span data-i18n-key="same_attack_empty"></span>
 :::
 
-## 🥇 Bonne pratique #4 {auto-animate=true}
+## <span data-i18n-key="best_practice_4"></span> {auto-animate=true}
 
 :::: {.columns}
 ::: {.column width="50%"}
-**❌ Avant**
+**<span data-i18n-key="before_label"></span>**
 
 ```r
 rv$query <- paste0(
@@ -623,7 +921,7 @@ rv$result <- dbGetQuery(
 :::
 
 ::: {.column width="50%"}
-**✅ Ou avec `glue_sql`**
+**<span data-i18n-key="or_with_glue_sql"></span>**
 
 ```r
 rv$query <- glue_sql(
@@ -641,25 +939,25 @@ rv$result <- dbGetQuery(
 <a href="https://shiny.posit.co/r/articles/build/sql-injections/" target="_blank">📖 shiny.posit.co/r/articles/build/sql-injections/</a>
 :::
 
-# XSS
+# <span data-i18n-key="section_xss"></span>
 
-## XSS : Cross-Site Scripting
+## <span data-i18n-key="xss_full"></span>
 
-### Du code JS exécuté **côté navigateur**
+### <span data-i18n-key="js_executed_browser"></span>
 
 ::: {.fragment .fade-left}
-L'attaquant injecte du code dans une page...
+<span data-i18n-key="attacker_injects"></span>
 :::
 
 ::: {.fragment .fade-left}
-...stocké côté serveur ou simplement reflété...
+<span data-i18n-key="stored_or_reflected"></span>
 :::
 
 ::: {.fragment .fade-left}
-➜ exécuté chez **tous les visiteurs** qui consultent la page.
+<span data-i18n-key="executed_all_visitors"></span>
 :::
 
-## XSS : Un mur de commentaires {auto-animate=true}
+## <span data-i18n-key="wall_of_comments"></span> {auto-animate=true}
 
 :::: {.columns}
 ::: {.column width="70%"}
@@ -671,18 +969,18 @@ L'attaquant injecte du code dans une page...
 
 ::: {.column width="30%"}
 ::: {.fragment .fade-left}
-Pierrot poste un message :
+<span data-i18n-key="pierrot_posts"></span>
 
 `Salut tout le monde !`{style="font-size: 0.85rem"}
 :::
 
 ::: {.fragment .fade-left}
-Tout fonctionne ✅
+<span data-i18n-key="everything_works"></span>
 :::
 :::
 ::::
 
-## XSS : Un attaquant arrive {auto-animate=true}
+## <span data-i18n-key="attacker_arrives_title"></span> {auto-animate=true}
 
 :::: {.columns}
 ::: {.column width="70%"}
@@ -694,22 +992,22 @@ Tout fonctionne ✅
 
 ::: {.column width="30%"}
 ::: {.fragment .fade-left}
-Un autre poste :
+<span data-i18n-key="another_posts"></span>
 
 `<script>alert(...)</script>`{style="font-size: 0.75rem"}
 :::
 
 ::: {.fragment .fade-left}
-💥 Alert chez tous les visiteurs.
+<span data-i18n-key="alert_all_visitors"></span>
 :::
 
 ::: {.fragment .fade-left}
-Et **à chaque rechargement** : ça repart.
+<span data-i18n-key="each_reload"></span>
 :::
 :::
 ::::
 
-## XSS : Le vrai vol {auto-animate=true}
+## <span data-i18n-key="real_theft"></span> {auto-animate=true}
 
 :::: {.columns}
 ::: {.column width="70%"}
@@ -721,7 +1019,7 @@ Et **à chaque rechargement** : ça repart.
 
 ::: {.column width="30%"}
 ::: {.fragment .fade-left}
-L'attaquant raffine :
+<span data-i18n-key="attacker_refines"></span>
 
 ```html
 <script>
@@ -733,22 +1031,22 @@ L'attaquant raffine :
 :::
 
 ::: {.fragment .fade-left}
-💥 Faux bouton de **connexion** pour tous.
+<span data-i18n-key="fake_login_button"></span>
 :::
 
 ::: {.fragment .fade-left}
-➜ Vol silencieux des credentials.
+<span data-i18n-key="silent_credentials_theft"></span>
 :::
 :::
 ::::
 
-## 🥇 Bonne pratique #5
+## <span data-i18n-key="best_practice_5"></span>
 
-### Échapper le contenu utilisateur avec `htmltools::htmlEscape()`
+### <span data-i18n-key="escape_user_content"></span>
 
 :::: {.columns}
 ::: {.column width="50%"}
-**❌ Avant**
+**<span data-i18n-key="before_label"></span>**
 
 ```r
 glue::glue(
@@ -759,7 +1057,7 @@ glue::glue(
 :::
 
 ::: {.column width="50%"}
-**✅ Après**
+**<span data-i18n-key="after_label"></span>**
 
 ```r
 glue::glue(
@@ -771,16 +1069,16 @@ glue::glue(
 ::::
 
 ::: {.fragment .fade-left}
-*Le `<script>` devient du texte affiché, pas exécuté.*
+<span data-i18n-key="script_becomes_text"></span>
 :::
 
 ::: {.fragment .fade-left}
-À appliquer sur **tout** contenu utilisateur : pseudo *et* message.
+<span data-i18n-key="apply_all_user_content"></span>
 :::
 
-# La cuisine sécurisée de Pierrot
+# <span data-i18n-key="section_secured_kitchen"></span>
 
-## La cuisine sécurisée de Pierrot
+## <span data-i18n-key="section_secured_kitchen"></span>
 
 :::: {.columns}
 ::: {.column width="45%"}
@@ -788,50 +1086,50 @@ glue::glue(
 :::
 
 ::: {.column width="55%"}
-### Les 3 portes à fermer
+### <span data-i18n-key="three_doors_close"></span>
 
 ::: {.fragment .fade-left}
-🐛 **Command Injection** : jamais évaluer un input
+<span data-i18n-key="cmd_inj_summary"></span>
 :::
 
 ::: {.fragment .fade-left}
-🐛 **SQL Injection** : `sqlInterpolate()` ou `glue_sql()`, toujours
+<span data-i18n-key="sql_inj_summary"></span>
 :::
 
 ::: {.fragment .fade-left}
-🐛 **XSS** : `htmlEscape()` tout ce qui s'affiche
+<span data-i18n-key="xss_summary"></span>
 :::
 
 ::: {.fragment .fade-left}
 \
 
-🔐 **Et la règle n°1** : ne jamais faire confiance à l'utilisateur
+<span data-i18n-key="rule_one_recap"></span>
 :::
 :::
 ::::
 
-## Et tout ce qu'on n'a pas eu le temps de voir
+## <span data-i18n-key="not_had_time"></span>
 
 ::: {.fragment .fade-left}
-🔑 **L'authentification** : `shinymanager`, Posit Connect, OAuth...
-*C'est un autre sujet, mais essentiel.*
+<span data-i18n-key="authentication"></span>
+<span data-i18n-key="auth_other_subject"></span>
 :::
 
 ::: {.fragment .fade-left}
 \
 
-📦 **Les dépendances à jour** : pas de Dependabot natif en R.
+<span data-i18n-key="dependencies_up_to_date"></span>
 
-Mise à jour régulière, surveillance manuelle des annonces upstream des paquets critiques.
+<span data-i18n-key="regular_update"></span>
 :::
 
-## Pour aller plus loin
+## <span data-i18n-key="going_further"></span>
 
-### S'entraîner
+### <span data-i18n-key="training"></span>
 
 <a href="https://connect.thinkr.fr/hackthisshiny/" target="_blank">🔗 connect.thinkr.fr/hackthisshiny/</a>
 
-### Lectures
+### <span data-i18n-key="readings"></span>
 
 <a href="https://shiny.posit.co/r/articles/build/sql-injections/" target="_blank">🔗 shiny.posit.co/r/articles/build/sql-injections/</a>
 
@@ -839,7 +1137,7 @@ Mise à jour régulière, surveillance manuelle des annonces upstream des paquet
 
 <a href="https://fr.vuejs.org/guide/best-practices/security" target="_blank">🔗 vuejs.org/guide/best-practices/security</a>
 
-## Merci
+## <span data-i18n-key="thank_you"></span>
 
 :::: {.columns}
 ::: {.column width="45%"}
@@ -847,12 +1145,12 @@ Mise à jour régulière, surveillance manuelle des annonces upstream des paquet
 :::
 
 ::: {.column width="55%"}
-### Des questions ?
+### <span data-i18n-key="any_questions"></span>
 
 <a href="https://arthurdata.github.io/rencontresR2026" target="_blank">🔗 arthurdata.github.io/rencontresR2026</a>
 
 \
 
-*Pierrot vous remercie.*
+<span data-i18n-key="pierrot_thanks_you"></span>
 :::
 ::::
